@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "devcom",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -7,23 +7,19 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite",
+    "start":"vite",
     "css": "npx tailwindcss -i ./src/index.css -o ./src/dist/build.css --watch"
   },
   "dependencies": {
-    "chart.js": "^4.4.1",
-    "chartjs-plugin-annotation": "^3.0.1",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2",
-    "react-type-animation": "^3.2.0"
+    "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
