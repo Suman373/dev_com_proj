@@ -13,7 +13,7 @@ const HackathonOrProjectCard = ({cardDetails}) => {
                         (cardDetails.type === 'hackathon') ? 
                             (
                                 <>
-                                    <div className="text-3xl text-white">
+                                    <div className="text-2xl text-white">
                                         {cardDetails.hackathon}
                                     </div>
                                     <div className="card-header--subheading text-xl">
@@ -24,7 +24,7 @@ const HackathonOrProjectCard = ({cardDetails}) => {
                         :
                             (
                                 <>
-                                    <div className="text-3xl text-white">
+                                    <div className="text-2xl text-white">
                                         {cardDetails.project}
                                     </div>
                                     <div className="card-header--subheading text-xl">
@@ -56,8 +56,11 @@ const HackathonOrProjectCard = ({cardDetails}) => {
                                 </p>
                                 <div className="w-full flex justify-start items-center gap-5">
                                     {
-                                        cardDetails.requirements.map((need) => (
-                                            <div className="required-stack flex flex-start items-center px-1 rounded text-white">
+                                        cardDetails.requirements.map((need, index) => (
+                                            <div 
+                                                className="required-stack flex flex-start items-center px-1 rounded text-white"
+                                                key={index}
+                                            >
                                                 {need}
                                             </div>
                                         ))
@@ -73,8 +76,11 @@ const HackathonOrProjectCard = ({cardDetails}) => {
                                 </p>
                                 <div className="w-full flex justify-start items-center gap-5">
                                     {
-                                        cardDetails.domains.map((domain) => (
-                                            <div className="required-stack flex flex-start items-center px-1 rounded text-white">
+                                        cardDetails.domains.map((domain, index) => (
+                                            <div 
+                                                className="required-stack flex flex-start items-center px-1 rounded text-white"
+                                                key={index}
+                                            >
                                                 {domain}
                                             </div>
                                         ))

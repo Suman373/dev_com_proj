@@ -63,10 +63,15 @@ const NavBar = ({currentPath}) => {
         }
     }, [])
 
+    
+	useEffect(() => {
+		userContext.getInitialUser()
+	}, [])
+
     return (
         <div className="w-full h-20 flex justify-between px-12 items-center bg-transparent text-white font-devcom">
             {
-                (userContext.loggedIn) ?
+                (userContext.loggedIn === true) ?
                     (
                         <div 
                             className="p-2 rounded-lg hover:cursor-pointer hover:bg-custom-hover"
@@ -82,7 +87,7 @@ const NavBar = ({currentPath}) => {
             }
 
             {
-                (userContext.loggedIn) ? 
+                (userContext.loggedIn === true) ? 
                     <div className="absolute top-0 left-0 h-20 -z-10 w-full flex justify-center gap-2 items-center">
                         <NavDevCom/>
                         {
@@ -91,7 +96,7 @@ const NavBar = ({currentPath}) => {
                                     <p className="text-3xl font-extrabold">
                                         /
                                     </p>
-                                    <p className="underline text-custom-green text-3xl font-extrabold">
+                                    <p className="underline text-custom-green text-3xl font-devcombold">
                                         {displayLink}
                                     </p>
                                 </div>
@@ -120,7 +125,7 @@ const NavBar = ({currentPath}) => {
                     </div>
             }
             {
-                (userContext.loggedIn) ?
+                (userContext.loggedIn === true) ?
                     <>
                         {
                             (userContext.user.dp?.length > 0) ?
@@ -149,10 +154,6 @@ const NavBar = ({currentPath}) => {
                     >
                         signup
                     </div>
-            }
-
-            {
-                
             }
         </div>
     )
