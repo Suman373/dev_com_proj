@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import moment from 'moment';
 import "./hackathonContent.css";
 
 import { DummyHackathonsAndProjectsArray } from "../../../data/DummyHackathonsAndProjects";
@@ -33,6 +33,10 @@ const HackathonContent = ({
   const requirements = cardDetails.requirement || [];
   const domains = cardDetails.domain || [];
 
+  const startDateFormatted = moment(cardDetails?.startDate).format('MMM DD');
+  const endDateFormatted = moment(cardDetails?.endDate).format('MMM DD');
+
+
   return (
     <div className="h-[503px] w-[808px] flex relative top-0 left-0 font-devcom">
       <HackathonContentOuterDivSVG />
@@ -45,7 +49,7 @@ const HackathonContent = ({
           <BlackArrowIconSVG />
         </div>
       </div>
-      <div className="absolute w-11/12 h-[108px] right-0 flex justify-between items-center px-10">
+      <div className="absolute w-4/5 h-[28px] right-0 flex justify-between items-center px-10">
         <div className="flex flex-col justify-center">
           <span className="text-3xl text-white">
             {cardDetails?.type === "hackathon" ? (
@@ -54,11 +58,7 @@ const HackathonContent = ({
               <>{cardDetails.project}</>
             )}
           </span>
-          {cardDetails?.type === "hackathon" && (
-            <span className="hackathon-date">
-              {cardDetails.start} - {cardDetails.end}
-            </span>
-          )}
+          {startDateFormatted} - {endDateFormatted}
         </div>
         <div className="flex items-center justify-end gap-3">
           <div

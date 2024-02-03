@@ -14,6 +14,7 @@ import Login from "./pages/login/Login";
 // context
 import UserState from "./contexts/UserState";
 import SignUp from "./pages/signup/SignUp";
+import ProfileRegistration from "./pages/signup/ProfileRegistration";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/connect" element={<Connect/>}/>
 					<Route path="/signup" element={<SignUp/>}/>
 					<Route path="/login" element={<Login/>}/>
+					<Route path="/details" element={<ProfileRegistration/>}/>
 				</Routes>
 			</Router>
 		</UserState>

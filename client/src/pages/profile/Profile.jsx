@@ -12,7 +12,7 @@ ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 
 import NavBar from "../../constants/NavBar"
 import ProfileBG from "./ProfileBG"
-
+import profileimg from "../../assets/profile.png"
 import './profile.css'
 
 import { DummyUser, DummyUserData } from "../../data/DummyUser"
@@ -146,6 +146,8 @@ const Profile = () => {
                                 <circle cx="20rem" cy="20rem" r="10.88rem" stroke="#5BD45C" opacity="0.6" fill="none"/>
                                 <circle cx="20rem" cy="20rem" r="7.22rem" stroke="#5BD45C" opacity="1" fill="none"/>
                                 {/* <circle cx="20rem" cy="20rem" r="1px" stroke="#fff" opacity="1" fill="none"/> */}
+                            
+                                <image href={profileimg} x="10rem" y="10rem" width="20rem" height="20rem" />
                             </svg>
                             
                         </div>

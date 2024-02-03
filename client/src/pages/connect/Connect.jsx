@@ -15,7 +15,7 @@ const Connect = () => {
             <div className="bg-transparent absolute top-20 left-0 h-[calc(100vh-10rem)] px-10 pt-4 pb-4 w-full flex items-center justify-center">
     
                 <div id='hack2-left-panel' className='w-2/6 h-full px-2 flex flex-col justify-start items-start gap-16'> 
-                    <p className='font-devcombold font-extrabold text-5xl xl:text-6xl text-custom-green px-2'>
+                    <p className='font-devcombold font-extrabold text-5xl xl:text-5xl text-custom-green px-2'>
                         Connect With People
                     </p>
                 </div>
