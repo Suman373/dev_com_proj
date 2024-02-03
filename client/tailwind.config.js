@@ -16,7 +16,8 @@ export default {
           },
           fontFamily: {
             devcom: ['Neue Machina', 'georgia'],
-            devcombold: ['Neue Machina--bold']
+            devcombold: ['Neue Machina--bold'],
+            devcomthin: ['Neue Machina--light']
           }
       },
   },

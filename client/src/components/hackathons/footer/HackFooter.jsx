@@ -23,6 +23,10 @@ const HackFooter = ({searchActive, setSearchActive}) => {
             desc: 'registration closed'
         },
         {
+            header: '/time',
+            desc: 'this week, this month, next month etc.'
+        },
+        {
             header: '/help',
             desc: 'dor any queries or help you need'
         }
@@ -283,7 +287,7 @@ const HackFooter = ({searchActive, setSearchActive}) => {
             {
                 (slashPromptOpen && currentPromptArray?.length > 0) && 
                     (
-                        <div className="slash-prompt-box min-w-fit absolute left-10 bottom-24 z-10 h-auto px-6 py-4 bg-zinc-800 flex flex-col justify-evenly items-center font-devcom">
+                        <div className="slash-prompt-box min-w-fit absolute left-10 bottom-24 z-20 h-auto px-6 py-4 bg-zinc-800 flex flex-col justify-evenly items-center font-devcom">
                             {
                                 currentPromptArray.map((option, index) => (
                                     <div className={`min-w-full flex justify-between rounded pl-2 items-center ${(index === highlightedPromptIndex)  ? 'bg-zinc-700 hover:cursor-pointer hover:bg-zinc-800' : 'hover:cursor-pointer hover:bg-zinc-800 active:bg-zinc-700' }`} 
@@ -362,7 +366,7 @@ const HackFooter = ({searchActive, setSearchActive}) => {
                         )
                 }
                 <div 
-                    className='h-16 w-1/5 flex justify-center items-center shadow-custom text-white text-3xl font-devcom hover:cursor-pointer'
+                    className='h-16 w-1/5 flex justify-center items-center shadow-custom text-white text-3xl font-devcom hover:cursor-pointer backdrop-blur-md'
                     onClick={() => handleSearch()}
                 >
                     search

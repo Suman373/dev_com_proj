@@ -16,6 +16,7 @@ import NavBar from '../../constants/NavBar'
 import HackFooter from '../../components/hackathons/footer/HackFooter'
 import HackathonOrProjectCard from '../../components/hackathons/cards/HackathonOrProjectCard'
 import { RecentHackathonSVG } from '../../assets/ForHackathons'
+import HackathonContent from '../../components/hackathons/content/HackathonContent'
 
 const Hackathons = () => {
 
@@ -31,13 +32,19 @@ const Hackathons = () => {
     }, [])  
 
     const [searchActive, setSearchActive] = useState(false)
+    const [currentOpenHackathon, setCurrentOpenHackathon] = useState(-1)
     // const [leftPanelWidth, setLeftPanelWidth] = useState()
+
+    const resetCurrentOpenHackathon = () => {
+        setCurrentOpenHackathon(-1)
+        setSearchActive(true)
+    }
 
     return (
         <>
             <HackathonsBG/>
             <NavBar currentPath={window.location.pathname}/>
-            <div className="bg-transparent absolute top-20 left-0 h-[calc(100vh-10rem)] px-10 pt-4 pb-4 w-full flex items-center justify-center">
+            <div className="bg-transparent absolute top-20 left-0 h-[calc(100vh-10rem)] px-10 pt-4 pb-4 w-full flex items-center justify-center gap-20">
                 {
                     (searchActive) && 
                         (
@@ -48,16 +55,43 @@ const Hackathons = () => {
                             </div>
                         )
                 }
-                <div id='hackathon-cards-section' className={`h-full bg-transparent grid ${(searchActive) ? 'grid-cols-2 w-4/6' : 'grid-cols-3 w-full'} gap-8 overflow-y-auto`}>
-                    {
-                        dummyHackathonsAndProjectsArray.map((item, index) => (
-                            <HackathonOrProjectCard cardDetails={item} key={index}/>
-                        ))   
-                    }
-                </div>
+                {
+                    (currentOpenHackathon > -1) ?    
+                        (
+                            <>
+                                <div className="w-4/6 h-full flex item-center">
+                                    <HackathonContent
+                                        currentOpenHackathon={currentOpenHackathon}
+                                        resetCurrentOpenHackathon={resetCurrentOpenHackathon}
+                                    />
+                                </div>
+                            </>
+                        )
+                    :
+                        (
+                            <>
+                                <div id='hackathon-cards-section' className={`h-full bg-transparent grid ${(searchActive) ? 'grid-cols-2 w-4/6' : 'grid-cols-3 w-full'} gap-8 overflow-y-auto`}>
+                                    {
+                                        dummyHackathonsAndProjectsArray.map((item, index) => (
+                                            <HackathonOrProjectCard 
+                                                cardDetails={item} 
+                                                setSearchActive={setSearchActive}
+                                                setCurrentOpenHackathon={setCurrentOpenHackathon}
+                                                key={index}
+                                            />
+                                        ))   
+                                    }
+                                </div>
+                            </>
+                        )
+                }
+                
             </div>
-           
-            <HackFooter searchActive={searchActive} setSearchActive={setSearchActive}/>
+                
+            {
+                (currentOpenHackathon === -1) &&
+                    <HackFooter searchActive={searchActive} setSearchActive={setSearchActive}/>
+            }
         </>
     )
 }
