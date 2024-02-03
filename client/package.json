@@ -11,6 +11,7 @@
     "css": "npx tailwindcss -i ./src/index.css -o ./src/dist/build.css --watch"
   },
   "dependencies": {
+    "@mantine/core": "^7.5.1",
     "chart.js": "^4.4.1",
     "chartjs-plugin-annotation": "^3.0.1",
     "react": "^18.2.0",

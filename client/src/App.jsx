@@ -12,7 +12,8 @@ import Connect from "./pages/connect/Connect";
 import Login from "./pages/login/Login";
 
 // context
-import UserState, { UserContext } from "./contexts/UserState";
+import UserState from "./contexts/UserState";
+import SignUp from "./pages/signup/SignUp";
 
 function App() {
 
@@ -21,13 +22,14 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path="/" element={<PreHome />}/>
-					<Route path="/login" element={<Login/>}/>
 					<Route path='/home' element={<Home/>}/>
 					<Route path="/hackathons" element={<Hackathons/>}/>
 					<Route path="/profile" element={<Profile/>}/>
 					<Route path="/articles" element={<Articles/>}/>
 					<Route path="/chat" element={<Chat/>}/>
 					<Route path="/connect" element={<Connect/>}/>
+					<Route path="/signup" element={<SignUp/>}/>
+					<Route path="/login" element={<Login/>}/>
 				</Routes>
 			</Router>
 		</UserState>
