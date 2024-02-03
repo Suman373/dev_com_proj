@@ -40,7 +40,7 @@ const editPost = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(_id)) {
             return res.status(422).json({ message: "Id not valid" });
         }
-        const postExist = await PostModel.exists(_id);
+        const postExist = await PostModel.exists({_id:_id});
         if (!postExist) return res.status(404).json({ message: "Post not found" });
         const editedPost = await PostModel.findByIdAndUpdate(_id, req.body, { new: true });
         if (!editedPost) {
@@ -65,11 +65,11 @@ const joinPost = async (req, res) => {
             return res.status(422).json({ message: "Id not valid" });
         }
         // post doesnt exist
-        const postExist = await PostModel.exists(_id);
+        const postExist = await PostModel.exists({_id:_id}).select('userId');
         if (!postExist) return res.status(404).json({ messge: "Hackathon doesnt' exist" });
 
         // user cannot join posts created by themselves
-        if (postExist?.userId === userId) {
+        if (postExist.userId.toString() === userId) {
             throw new Error("Cannot join hackathons created by yourself");
         }
         // already joined
@@ -102,7 +102,7 @@ const leavePost = async (req, res) => {
             return res.status(422).json({ message: "Id not valid" });
         }
         // post doesnt exist
-        const postExist = await PostModel.exists(_id);
+        const postExist = await PostModel.exists({_id:_id});
         if (!postExist) return res.status(404).json({ messge: "Hackathon doesnt' exist" });
         // have not joined
         const notJoined = await PostModel.find({ _id, joinees: { $nin: [userId] } }).countDocuments();

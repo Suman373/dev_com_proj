@@ -29,7 +29,7 @@ const postSchema = new mongoose.Schema({
     },
     joinees: {
         type: [mongoose.SchemaTypes.ObjectId],
-        // ref: 'UserModel',
+        ref: 'UserModel',
         default: []
     },
     status: {
