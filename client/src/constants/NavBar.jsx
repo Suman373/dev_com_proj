@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 
+import './navbar.css'
+
 // context
 import { UserContext } from '../contexts/UserState'
 
@@ -63,10 +65,15 @@ const NavBar = ({currentPath}) => {
         }
     }, [])
 
+    
+	useEffect(() => {
+		userContext.getInitialUser()
+	}, [])
+
     return (
-        <div className="w-full h-20 flex justify-between px-12 items-center bg-transparent text-white font-devcom">
+        <div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-transparent text-white font-devcom z-10">
             {
-                (userContext.loggedIn) ?
+                (userContext.loggedIn === true) ?
                     (
                         <div 
                             className="p-2 rounded-lg hover:cursor-pointer hover:bg-custom-hover"
@@ -82,7 +89,7 @@ const NavBar = ({currentPath}) => {
             }
 
             {
-                (userContext.loggedIn) ? 
+                (userContext.loggedIn === true) ? 
                     <div className="absolute top-0 left-0 h-20 -z-10 w-full flex justify-center gap-2 items-center">
                         <NavDevCom/>
                         {
@@ -91,7 +98,7 @@ const NavBar = ({currentPath}) => {
                                     <p className="text-3xl font-extrabold">
                                         /
                                     </p>
-                                    <p className="underline text-custom-green text-3xl font-extrabold">
+                                    <p className="underline text-custom-green text-3xl font-devcombold">
                                         {displayLink}
                                     </p>
                                 </div>
@@ -107,9 +114,9 @@ const NavBar = ({currentPath}) => {
                         </div>
                         <div
                             className='py-2 px-4 flex justify-center items-center text-xl rounded-2xl  hover:bg-custom-hover hover:cursor-pointer'
-                            onClick={() => handleNavigation('blogs')}
+                            onClick={() => handleNavigation('articles')}
                         >
-                            blogs
+                            articles
                         </div>
                         <div
                             className='py-2 px-4 flex justify-center items-center text-xl rounded-2xl hover:bg-custom-hover hover:cursor-pointer'
@@ -120,7 +127,7 @@ const NavBar = ({currentPath}) => {
                     </div>
             }
             {
-                (userContext.loggedIn) ?
+                (userContext.loggedIn === true) ?
                     <>
                         {
                             (userContext.user.dp?.length > 0) ?
@@ -149,10 +156,6 @@ const NavBar = ({currentPath}) => {
                     >
                         signup
                     </div>
-            }
-
-            {
-                
             }
         </div>
     )

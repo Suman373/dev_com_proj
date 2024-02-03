@@ -9,28 +9,24 @@ const UserState = (props) => {
     }
 
     const [user, setUser] = useState()
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState()
 
     const getInitialUser = () => {
-        const user = JSON.parse(localStorage.getItem('user'))
-        // console.log(user)
-        if (typeof(user) === 'object') {
-            setUser({...user})
+        const existingUser = JSON.parse(localStorage.getItem('user'))
+        if (existingUser) {
+            setUser({...existingUser})
             setLoggedIn(true)
+            // console.log('logged in from getIntialUser', existingUser)
         } else {
             setUser({...blankUser})
+            setLoggedIn(false)
         }
     }
-
-    useEffect(() => {
-        getInitialUser() 
-    }, [])
 
     const updateUser = (newUser) => {
         setUser({...newUser})
         setLoggedIn(true)
         localStorage.setItem('user', JSON.stringify(newUser))
-        // console.log('check')
     } 
 
     const logoutUser = () => {
@@ -40,7 +36,7 @@ const UserState = (props) => {
     }
 
     return (
-        <UserContext.Provider value={{user, updateUser, logoutUser, loggedIn}}>
+        <UserContext.Provider value={{user, updateUser, logoutUser, loggedIn, getInitialUser}}>
             {props.children}
         </UserContext.Provider>
     )

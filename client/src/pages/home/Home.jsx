@@ -15,7 +15,6 @@ import NavBar from "../../constants/NavBar";
 const Home = () => {
 
 	const userContext = useContext(UserContext)
-	const [screenHeight, setScreenHeight] = useState(window.innerHeight)
 
 	// NECESSARIES FOR NAVIGATION
 
@@ -30,7 +29,7 @@ const Home = () => {
 			<HomeBG/>
 			<NavBar currentPath={''}/>
 			{
-				(userContext.loggedIn) && 
+				(userContext.loggedIn === true) && 
 					<>
 						{/* left nav panel */}
 						<div className="absolute top-20 left-0 h-[calc(100vh-5rem)] w-56 px-auto flex flex-col justify-center items-center z-10 font-devcom">
@@ -43,9 +42,9 @@ const Home = () => {
 								</button>
 								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
-									onClick={() => handleNavigation('blogs')}
+									onClick={() => handleNavigation('articles')}
 								>
-									blogs
+									articles
 								</button>
 								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
