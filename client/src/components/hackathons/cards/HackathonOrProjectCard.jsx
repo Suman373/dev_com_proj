@@ -2,7 +2,13 @@ import { BehanceIconSvg, GitHubIconSvg } from "../../../assets/ForHackathonCard"
 
 import './hackathonOrProjectCard.css'
 
-const HackathonOrProjectCard = ({cardDetails}) => {
+const HackathonOrProjectCard = ({cardDetails, setSearchActive, setCurrentOpenHackathon}) => {
+
+    const handleOpenHackathon = (hackathonId) => {
+        setSearchActive(true)
+        setCurrentOpenHackathon(hackathonId)
+    }
+
     return (
         <div 
             className="card-container flex flex-col justify-center items-center bg-zinc-800 font-devcom"
@@ -92,9 +98,24 @@ const HackathonOrProjectCard = ({cardDetails}) => {
             </div>
             
             <div className="card-footer h-1/4 w-full px-4 flex justify-between items-center">
-                <span className="card-footer--tags px-1 bg rounded text-custom-green">
-                    {cardDetails.mode}
-                </span>
+                <div className="h-full flex items-center w-fit justify-start gap-3">
+                    <span className="card-footer--tags px-2 bg rounded text-custom-green">
+                        {cardDetails.mode}
+                    </span>
+                    <span className="card-footer--tags px-2 bg rounded text-custom-green">
+                        {cardDetails.openStatus}
+                    </span>
+                    <span className="card-footer--tags px-2 bg rounded text-custom-green">
+                        {cardDetails.liveStatus}
+                    </span>
+                </div>
+                <div    
+                    className="hackathoncard-join-button px-3 py-2 flex items-center hover:cursor-pointer rounded-md text-custom-green text-lg"
+                    onClick={() => {handleOpenHackathon(cardDetails.id)}}
+                >
+                    Join Now 
+                </div>
+
             </div>
         </div>
     )

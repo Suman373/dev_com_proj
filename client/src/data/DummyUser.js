@@ -65,5 +65,8 @@ export const DummyUserData = {
                 'JavaScript'
             ]
         },
+    ],
+    skillSet: [
+        'react', 'cpp', 'js', 'java'
     ]
 }

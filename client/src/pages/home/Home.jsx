@@ -66,9 +66,19 @@ const Home = () => {
 
 			<div className="home-container absolute top-20 h-[calc(100vh-5rem)] w-full flex flex-col justify-center items-center gap-5">
 				<div className="home-container-svgs flex flex-col justify-between items-start gap-2">
-					<ConnectSVG/>
+					<div 
+						className="hover:cursor-pointer"
+						onClick={() => {navigate('/connect')}}
+					>
+						<ConnectSVG/>
+					</div>
 					<CollabSvg/>
-					<DevelopSvg/>
+					<div 
+						className="hover:cursor-pointer"
+						onClick={() => {navigate('/hackathons')}}
+					>
+						<DevelopSvg/>
+					</div>
 					<DevComGreenFilledSvg/>
 				</div>
 				<p className="text-white text-3xl font-devcom">
