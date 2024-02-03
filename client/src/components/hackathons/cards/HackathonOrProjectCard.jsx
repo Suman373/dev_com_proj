@@ -29,9 +29,7 @@ const HackathonOrProjectCard = ({
               {startDateFormatted} - {endDateFormatted}
             </span>
           </div>
-          <div className="card-header--subheading text-xl">
-            {cardDetails.hackathon}
-          </div>
+          
         </div>
         <div className="w-28 flex justify-between">
           <div className="w-12 h-12 flex justify-center items-center bg-custom-dark rounded-full">
