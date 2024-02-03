@@ -5,13 +5,3 @@ export const NavDevCom = () => {
         </svg>
     )
 }
-
-export const NavHam = () => {
-    return (
-        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 10H35V12H5Z" fill="#fff" fill-opacity="1" />
-            <path d="M5 30H35V32H5Z" fill="#fff" fill-opacity="1" />
-        </svg>
-
-    )
-}

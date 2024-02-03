@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // context
 import { useContext } from "react";
@@ -8,7 +9,7 @@ import { UserContext } from "../../contexts/UserState";
 import { ConnectSVG, CollabSvg, DevelopSvg, DevComGreenFilledSvg } from "../../assets/ForHome";
 
 // components
-import HomeBG from "../../assets/HomeBG";
+import HomeBG from "./HomeBG";
 import NavBar from "../../constants/NavBar";
 
 const Home = () => {
@@ -16,35 +17,42 @@ const Home = () => {
 	const userContext = useContext(UserContext)
 	const [screenHeight, setScreenHeight] = useState(window.innerHeight)
 
+	// NECESSARIES FOR NAVIGATION
+
+    const navigate = useNavigate()
+
+    const handleNavigation = (path) => {
+        navigate(`/${path}`)
+    }
+
 	return (
 		<>
 			<HomeBG/>
-			<NavBar/>
-
+			<NavBar currentPath={''}/>
 			{
 				(userContext.loggedIn) && 
 					<>
 						{/* left nav panel */}
-						<div className="absolute top-20 left-0 h-[calc(100vh-5rem)] w-56 px-auto flex flex-col justify-center items-center font-devcom">
+						<div className="absolute top-20 left-0 h-[calc(100vh-5rem)] w-56 px-auto flex flex-col justify-center items-center z-10 font-devcom">
 							<div className="-mt-10 flex flex-col justify-evenly gap-4">
-								<div
+								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
 									onClick={() => handleNavigation('hackathons')}
 								>
 									hackathons
-								</div>
-								<div
+								</button>
+								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
 									onClick={() => handleNavigation('blogs')}
 								>
 									blogs
-								</div>
-								<div
+								</button>
+								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
 									onClick={() => handleNavigation('chat')}
 								>
 									chat
-								</div>
+								</button>
 							</div>
 						</div>
 						
@@ -54,15 +62,6 @@ const Home = () => {
 								press "/" anytime to start collab
 							</p>
 						</div>
-						{/* <div className="absolute top-20 right-0 -mr-20 flex h-[calc(100vh-5rem)] w-60 items-center justify-center border">
-							<div className=" bg-red-500 border-2 border-sky-900 flex items-center justify-center">
-								<p className="-rotate-90 w-fit font-devcom text-xl text-zinc-700 whitespace-nowrap ">
-									press "/" anytime to start collab
-								</p>
-							</div>
-						</div> */}
-						
-						
 					</>
 			}
 

@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
 import Home from "./pages/home/Home";
+import NavBar from "./constants/NavBar";
 import Hackathons from "./pages/hackathon/Hackathons";
 
 import UserState from "./contexts/UserState";
@@ -7,7 +9,7 @@ import UserState from "./contexts/UserState";
 function App() {
 
 	return (
-		<UserState>
+		<UserState>			
 			<Router>
 				<Routes>
 					<Route exact path="/" element={<Home />} />

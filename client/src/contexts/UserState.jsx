@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 export const UserContext = createContext(null)
 
@@ -8,20 +8,34 @@ const UserState = (props) => {
         dp: ''
     }
 
-    const [user, setUser] = useState(blankUser)
+    const [user, setUser] = useState()
     const [loggedIn, setLoggedIn] = useState(false)
 
+    const getInitialUser = () => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        // console.log(user)
+        if (typeof(user) === 'object') {
+            setUser({...user})
+            setLoggedIn(true)
+        } else {
+            setUser({...blankUser})
+        }
+    }
+
+    useEffect(() => {
+        getInitialUser() 
+    }, [])
+
     const updateUser = (newUser) => {
-        setUser({
-            name: newUser.name,
-            dp: newUser.dp
-        })
+        setUser({...newUser})
         setLoggedIn(true)
-        console.log('check')
+        localStorage.setItem('user', JSON.stringify(newUser))
+        // console.log('check')
     } 
 
     const logoutUser = () => {
-        setUser(blankUser)
+        setUser({...blankUser})
+        localStorage.removeItem('user')
         setLoggedIn(false)
     }
 

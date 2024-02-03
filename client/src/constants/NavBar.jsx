@@ -8,15 +8,15 @@ import { UserContext } from '../contexts/UserState'
 import { DummyUser } from '../data/DummyUser'
 
 // svgs
-import { NavDevCom, NavHam } from "../assets/ForNavBar"
+import { NavDevCom } from "../assets/ForNavBar"
 
-const NavBar = () => {
+const NavBar = ({currentPath}) => {
 
     // NECESSARIES FOR USER DATA
 
     const userContext = useContext(UserContext)
     const [dummyUser, setDummyUser] = useState(DummyUser)
-    
+
     useEffect(() => {
         setDummyUser(DummyUser)
     }, [])
@@ -24,30 +24,78 @@ const NavBar = () => {
     // NECESSARIES FOR NAVIGATION
 
     const navigate = useNavigate()
+
     const handleNavigation = (path) => {
         navigate(`/${path}`)
     }
+
+    // NECESSARIES HAM MENU MODAL
 
     const handleHamToggle = () => {
 
     }
 
+    const [displayLink, setDisplayLink] = useState()
+
+    function formatLink(link) {
+        let upperCaseActive = true
+        let formattedLink = ""
+        for (let i = 0; i < link.length; i++) {
+            let letter = link[i]
+            if (letter === ' ') {
+                upperCaseActive = true
+                continue
+            } 
+            if (upperCaseActive) {
+                formattedLink += letter.toString().toUpperCase()
+                upperCaseActive = false
+            } else {
+                formattedLink += letter.toString()
+            }
+        }
+        return formattedLink
+    }
+
+    useEffect(() => {
+        if (currentPath !== null && currentPath?.length > 0) {
+            let actualPath = currentPath?.slice(1, currentPath.length)
+            setDisplayLink(formatLink(actualPath))
+        }
+    }, [])
+
     return (
         <div className="w-full h-20 flex justify-between px-12 items-center bg-transparent text-white font-devcom">
             {
                 (userContext.loggedIn) ?
-                    <div 
-                        className="nav-ham w-10 h-4 border-t-2 border-b-2 hover:cursor-pointer"
-                        onClick={() => handleHamToggle()}
-                    >
-                    </div>
+                    (
+                        <div 
+                            className="p-2 rounded-lg hover:cursor-pointer hover:bg-custom-hover"
+                            onClick={() => handleHamToggle()}
+                        >
+                            <div className="nav-ham z-0 w-10 h-4 border-t-2 border-b-2"
+                            >
+                            </div>
+                        </div>
+                    )
                 : 
                     <NavDevCom/>
             }
+
             {
                 (userContext.loggedIn) ? 
-                    <div className="absolute top-0 left-0 h-20 w-full flex justify-center items-center">
+                    <div className="absolute top-0 left-0 h-20 -z-10 w-full flex justify-center gap-2 items-center">
                         <NavDevCom/>
+                        {
+                            (currentPath !== null && currentPath?.length > 0) && 
+                                <div className='flex gap-2 text-custom-green'>
+                                    <p className="text-3xl font-extrabold">
+                                        /
+                                    </p>
+                                    <p className="underline text-custom-green text-3xl font-extrabold">
+                                        {displayLink}
+                                    </p>
+                                </div>
+                        }
                     </div>
                 :
                     <div className="navbar-center-buttons h-full w-1/5 flex justify-evenly gap-2 items-center">
@@ -77,7 +125,7 @@ const NavBar = () => {
                         {
                             (userContext.user.dp?.length > 0) ?
                                 <div 
-                                    className="relative w-10 h-10 rounded-full overflow-hidden hover:cursor-pointer"
+                                    className="relative w-10 h-10 rounded-full overflow-hidden hover:cursor-pointer hover:scale-110"
                                     onClick={() => userContext.logoutUser()}
                                 >
                                     <img 
@@ -102,7 +150,10 @@ const NavBar = () => {
                         signup
                     </div>
             }
-            
+
+            {
+                
+            }
         </div>
     )
 }

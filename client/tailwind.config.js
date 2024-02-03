@@ -11,6 +11,9 @@ export default {
             'custom-hover': '#272a2b',
             'custom-green': '#5BD45C'
           },
+          colors: {
+            'custom-green': '#5BD45C'
+          },
           fontFamily: {
             devcom: ['Neue Machina', 'georgia'],
             devcom_bold: ['Neue Machina--bold']
