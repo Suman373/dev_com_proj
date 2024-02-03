@@ -65,6 +65,9 @@ const userSchema = new mongoose.Schema({
         type:[mongoose.SchemaTypes.ObjectId],
         ref:'PostModel'
     },
+    connections:{
+        
+    }
 },{timestamps:true});
 
 // user registration 

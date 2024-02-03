@@ -1,12 +1,18 @@
 const express = require('express');
 require('dotenv').config();
+const http = require('http');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const socket = require('socket.io');
 const app = express();
+const server = http.createServer(app);
+const io = socket(server);
 const user = require('./routes/userRoutes');
 const post = require('./routes/postRoute');
 const auth = require('./routes/authRoute');
-const PORT = process.env.PORT || 5000;
+const verifyToken = require('./middleware/verifyToken');
+const EXPRESS_PORT = process.env.EXPRESS_PORT || 5000;
+const IO_PORT = process.env.IO_PORT || 5500;
 
 
 // middlewares
@@ -20,9 +26,20 @@ app.use(express.urlencoded({extended:true}));
 
 // routes
 app.get('/',(req,res)=>res.send("Welcome to Devcom node server"));
+app.use('/auth',auth);
+// app.use(verifyToken);
 app.use('/user',user);
 app.use('/post',post);
-app.use('/auth',auth);
+
+
+// socket event handlers
+io.on('connection', ({userId}) => {
+    console.log('A user connected w id : ',userId);
+
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+  });
 
 
 const connectToDb = async () => {
@@ -38,5 +55,8 @@ const connectToDb = async () => {
 
 connectToDb();
 
-// listen to PORT
-app.listen(PORT, console.log(`Server is running @ PORT ${PORT}`));
+// socket PORT
+io.listen(IO_PORT, console.log(`Socket is running @ PORT ${IO_PORT}`));
+
+// express server PORT
+app.listen(EXPRESS_PORT, console.log(`Server is running @ PORT ${EXPRESS_PORT}`));
