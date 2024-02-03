@@ -42,9 +42,9 @@ const Home = () => {
 								</button>
 								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'
-									onClick={() => handleNavigation('blogs')}
+									onClick={() => handleNavigation('articles')}
 								>
-									blogs
+									articles
 								</button>
 								<button
 									className='py-2 px-4 flex justify-start items-center text-2xl rounded-2xl text-white hover:bg-custom-hover hover:cursor-pointer'

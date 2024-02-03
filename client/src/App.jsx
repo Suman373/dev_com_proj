@@ -8,6 +8,7 @@ import Profile from "./pages/profile/Profile";
 
 // context
 import UserState, { UserContext } from "./contexts/UserState";
+import Articles from "./pages/article/Articles";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 					<Route exact path="/" element={<Home />} />
 					<Route path="/hackathons" element={<Hackathons/>}/>
 					<Route path="/profile" element={<Profile/>}/>
+					<Route path="/articles" element={<Articles/>}/>
 				</Routes>
 			</Router>
 		</UserState>

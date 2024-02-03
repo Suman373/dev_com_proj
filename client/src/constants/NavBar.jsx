@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 
+import './navbar.css'
+
 // context
 import { UserContext } from '../contexts/UserState'
 
@@ -69,7 +71,7 @@ const NavBar = ({currentPath}) => {
 	}, [])
 
     return (
-        <div className="w-full h-20 flex justify-between px-12 items-center bg-transparent text-white font-devcom">
+        <div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-transparent text-white font-devcom z-10">
             {
                 (userContext.loggedIn === true) ?
                     (
@@ -112,9 +114,9 @@ const NavBar = ({currentPath}) => {
                         </div>
                         <div
                             className='py-2 px-4 flex justify-center items-center text-xl rounded-2xl  hover:bg-custom-hover hover:cursor-pointer'
-                            onClick={() => handleNavigation('blogs')}
+                            onClick={() => handleNavigation('articles')}
                         >
-                            blogs
+                            articles
                         </div>
                         <div
                             className='py-2 px-4 flex justify-center items-center text-xl rounded-2xl hover:bg-custom-hover hover:cursor-pointer'

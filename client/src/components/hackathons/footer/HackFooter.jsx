@@ -20,11 +20,11 @@ const HackFooter = ({searchActive, setSearchActive}) => {
         },
         {
             header: '/closed',
-            desc: 'status closed'
+            desc: 'registration closed'
         },
         {
             header: '/help',
-            desc: 'for any queries or help you need'
+            desc: 'dor any queries or help you need'
         }
     ]
 
