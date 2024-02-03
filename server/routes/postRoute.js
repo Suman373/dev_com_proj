@@ -20,8 +20,8 @@ router.post('/join/:id',controllers.joinPost);
 // leave 
 router.post('/leave/:id',controllers.leavePost);
 
-// remove joinee
-// router.put('/remove/:id',controllers.removeJoinee);
+// get joinees info
+router.post('/getjoinees/:id',controllers.getJoinees); 
 
 // delete post
 router.delete('/:id', controllers.deletePost);

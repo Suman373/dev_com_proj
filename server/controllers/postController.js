@@ -149,6 +149,37 @@ const getUserPosts = async (req, res) => {
     }
 }
 
+
+// get joinees list
+const getJoinees = async(req,res)=>{
+    try {
+        const { id: _id } = await req.params; // post id
+        const { userId } = await req.body; // person id
+
+        if (!mongoose.Types.ObjectId.isValid(_id) || !mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(422).json({ message: "Id not valid" });
+        }
+        // post doesnt exist
+        const postExist = await PostModel.exists({_id:_id});
+        if (!postExist) return res.status(404).json({ messge: "Hackathon doesnt' exist" });
+
+        const joinees = await PostModel.findOne({_id:_id})
+        .select('joinees')
+        .populate({path:'joinees',select:'_id name email'})
+        .lean()
+        .exec();
+
+        if(!joinees.joinees){
+            throw new Error("Failed to fetch joinees");
+        }
+        res.status(200).json({message:"Fetched joinees",result:joinees.joinees});
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error?.message});
+    }
+}
+
 // delete post
 const deletePost = async(req,res)=>{
     try {
@@ -167,4 +198,4 @@ const deletePost = async(req,res)=>{
 }
 
 
-module.exports = { getAllPosts, addPost, editPost, joinPost, leavePost, getUserPosts, deletePost };
+module.exports = { getAllPosts, addPost, editPost, joinPost, leavePost, getUserPosts, deletePost, getJoinees };
