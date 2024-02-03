@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt');
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
+    completedDetails:{
+        type:Boolean,
+        default:false,
+    },
     username:{
         type:String,
         trim:true,
@@ -25,13 +29,40 @@ const userSchema = new mongoose.Schema({
         trim:true,
         required:[true,"Password is required"]
     },
+    education:{
+        type:String,
+        trim:true,
+    },
+    profession:{
+        type:String,
+        trim:true,
+    },
+    country:{
+        type:String,
+        trim:true,
+        default:"India"
+    },
+    state:{
+        type:String,
+        trim:true,
+    },
+    city:{
+        type:String,
+        trim:true
+    },
+    pin:{
+        type:Number,
+    },
+    bio:{
+        type:String,
+        trim:true,
+    },
     totalPostCount:{
         type:Number,
         default:0
     },
     createdPosts:{
         type:[mongoose.SchemaTypes.ObjectId],
-        unique:true,
         ref:'PostModel'
     }
 },{timestamps:true});

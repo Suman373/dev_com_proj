@@ -4,6 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const user = require('./routes/userRoutes');
+const post = require('./routes/postRoute');
+const auth = require('./routes/authRoute');
 const PORT = process.env.PORT || 5000;
 
 
@@ -19,6 +21,8 @@ app.use(express.urlencoded({extended:true}));
 // routes
 app.get('/',(req,res)=>res.send("Welcome to Devcom node server"));
 app.use('/user',user);
+app.use('/post',post);
+app.use('/auth',auth);
 
 
 const connectToDb = async () => {

@@ -5,7 +5,7 @@ const controllers = require('../controllers/userController');
 // get all users
 router.get('/',controllers.getUsers);
 // get user by id
-router.get('/getuser/:id',controllers.getUserById);
+router.post('/getuser/:id',controllers.getUserById);
 // update user
 router.put('/update/:id',controllers.updateUser);
 // delete user
