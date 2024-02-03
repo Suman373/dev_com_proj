@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "devcom",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -11,13 +11,9 @@
     "css": "npx tailwindcss -i ./src/index.css -o ./src/dist/build.css --watch"
   },
   "dependencies": {
-    "chart.js": "^4.4.1",
-    "chartjs-plugin-annotation": "^3.0.1",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2",
-    "react-type-animation": "^3.2.0"
+    "react-router-dom": "^6.11.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
