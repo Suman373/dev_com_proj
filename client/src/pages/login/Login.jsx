@@ -1,8 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeBG from "../home/HomeBG";
+import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginUser = async () => {
+    try {
+      if (!email | !password) {
+        alert("Fill all details");
+      }
+      const data = await axios.post("http://localhost:5000/auth/login", {
+        email,
+        password,
+      });
+      if (!data?.data?.result) {
+        console.log("err");
+      }
+      console.log(data?.data);
+      alert(data?.data?.message);
+      localStorage.setItem("token", data?.data?.token);
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <HomeBG />
@@ -18,8 +44,10 @@ const Login = () => {
                 Email
               </label>
               <input
-                type="email"
                 className="mt-1 h-14 text-sm w-full border rounded-md font-sm bg-transparent text-custom-green"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                value={email}
                 style={{ width: "480px" }}
               />
             </div>
@@ -29,15 +57,17 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 h-14 text-sm p-2 w-full border rounded-md font-sm bg-transparent text-custom-green"
               />
             </div>
-            <Link
-              to="/login"
+            <button
+              onClick={loginUser}
               className="h-16 w-full mt-12 flex justify-center items-center shadow-custom bg-green-500 font-medium hover:cursor-pointer backdrop-blur-md"
             >
               Login
-            </Link>
+            </button>
           </div>
         </div>
         <span className="font-devcom text-sm text-gray-400">
