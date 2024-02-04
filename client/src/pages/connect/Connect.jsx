@@ -1,11 +1,11 @@
 import NavBar from "../../constants/NavBar";
-import ConnectBG from "./ConnectBG";
-
 import CollabCard from "../../components/collab/CollabCard";
 import {useState, useEffect} from "react";
 import "./connect.css";
-import { DummCollabUsersArray } from "../../data/DummyCollabUsers";
 import axios from "axios";
+import HackFooter from "../../components/hackathons/footer/HackFooter";
+import HomeBG from "../home/HomeBG";
+
 const Connect = () => {
   const [postsData, setPostsData] = useState([]);
 
@@ -24,9 +24,17 @@ const Connect = () => {
     fetchPosts();
   }, []);
 
+  const [searchActive, setSearchActive] = useState(false);
+  const [currentOpenHackathon, setCurrentOpenHackathon] = useState(-1);
+
+  const resetCurrentOpenHackathon = () => {
+    setCurrentOpenHackathon(-1);
+    setSearchActive(true);
+  };
+
   return (
     <>
-      <ConnectBG />
+      <HomeBG />
       <NavBar currentPath={window.location.pathname} />
       <div className="bg-transparent absolute top-20 left-0 h-[calc(100vh-10rem)] px-10 pt-4 pb-4 w-full flex items-center justify-center">
         <div
@@ -52,7 +60,7 @@ const Connect = () => {
         </div>
       </div>
 
-      {/* <HackFooter searchActive={searchActive} setSearchActive={setSearchActive}/> */}
+      <HackFooter searchActive={searchActive} setSearchActive={setSearchActive}/>
     </>
   );
 };

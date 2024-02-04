@@ -23,13 +23,13 @@ const ChatFooter = ({sendMessage}) => {
         }
     }
 
-    useEffect(() => {
-        document.getElementById('chat-footer').addEventListener('keydown', sendOnEnterPress)
-        // console.log('listener added')
-        return () => {
-            document.getElementById('chat-footer').removeEventListener('keydown', sendOnEnterPress)
-        }
-    }, [])
+    // useEffect(() => {
+    //     document.getElementById('chat-footer').addEventListener('keydown', sendOnEnterPress)
+    //     // console.log('listener added')
+    //     return () => {
+    //         document.getElementById('chat-footer').removeEventListener('keydown', sendOnEnterPress)
+    //     }
+    // }, [])
 
     return (
         <div id='chat-footer' className='absolute bottom-0 h-16 w-full px-4 flex items-center'>
