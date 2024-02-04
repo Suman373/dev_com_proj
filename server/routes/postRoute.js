@@ -14,6 +14,9 @@ router.post('/',controllers.addPost);
 // edit post
 router.put('/:id', controllers.editPost);
 
+// get post by id
+router.get('/:id',controllers.getPostById);
+
 // join 
 router.post('/join/:id',controllers.joinPost);
 
