@@ -10,9 +10,12 @@ import {
   JavaSvg,
   SpringBootSvg,
 } from "../../assets/SkillSetSVG2";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const CollabCard = ({ cardDetails }) => {
   const navigate = useNavigate();
+  const [connPending, setConnPending] = useState(false);
 
   return (
     <div className="collab-card h-[250px] flex flex-col justify-between items-center text-white rounded-md font-devcom">
@@ -58,7 +61,15 @@ const CollabCard = ({ cardDetails }) => {
           </div>
           <div className="to-connect-button w-2/5 h-8 bg-custom-green px-2 py-1 flex rounded-md gap-1 hover:cursor-pointer">
             <ConnectIconSVG />
-            <span className="text-black text-sm font-devcomthin">Connect</span>
+            <span onClick={()=>{
+              if(connPending){
+                toast.success("Connection request removed");
+                setConnPending(false);
+              }else{
+                toast.success("Connection sent");
+                setConnPending(true);
+              }
+            }} className="text-black text-sm font-devcomthin">{connPending ? "Pending" : "Connect"}</span>
           </div>
         </div>
       </div>
