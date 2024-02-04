@@ -38,7 +38,7 @@ const ProfileRegistration = () => {
         toast.error("Fill all details");
         return;
       }
-      const data = await axios.put(`${import.meta.VITE_API_ENDPOINT}/user/update/${_id}`, {
+      const data = await axios.put(`${import.meta.env.VITE_API_ENDPOINT}/user/update/${_id}`, {
         education, profession, country, state, city, pin
       });
       if (!data?.data?.result) {
