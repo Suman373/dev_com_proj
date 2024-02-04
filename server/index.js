@@ -18,7 +18,7 @@ const IO_PORT = process.env.IO_PORT || 5500;
 // middlewares
 app.use(cors({
     credentials:true,
-    origin:["http://localhost:5173"]
+    origin:["http://localhost:5173","https://devcom.study","https://devcom-web.vercel.app"]
     // client port = 5173
 }));
 app.use(express.json());
@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended:true}));
 // routes
 app.get('/',(req,res)=>res.send("Welcome to Devcom node server"));
 app.use('/auth',auth);
-// app.use(verifyToken);
+// app.use(verifyToken); // auth middleware for api protection using authorized user 
 app.use('/user',user);
 app.use('/post',post);
 

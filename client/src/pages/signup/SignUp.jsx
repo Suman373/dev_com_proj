@@ -16,7 +16,7 @@ const SignUp = () => {
       if (!name || !email || !username || !password) {
         alert("Fill all details");
       }
-      const data = await axios.post("http://localhost:5000/auth/register", {
+      const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/register`, {
         name,
         email,
         username,

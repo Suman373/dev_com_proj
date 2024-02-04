@@ -5,6 +5,7 @@ import "./connect.css";
 import axios from "axios";
 import HackFooter from "../../components/hackathons/footer/HackFooter";
 import HomeBG from "../home/HomeBG";
+import toast from "react-hot-toast";
 
 const Connect = () => {
   const [postsData, setPostsData] = useState([]);
@@ -12,12 +13,14 @@ const Connect = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/user/");
+        const response = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/user`);
         const data = response.data;
         setPostsData(data.result);
+        toast.success("Fetched people to connect");
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
+        toast.error("Something went wrong");
       }
     };
 

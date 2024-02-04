@@ -14,7 +14,7 @@ const Login = () => {
       if (!email | !password) {
         alert("Fill all details");
       }
-      const data = await axios.post("http://localhost:5000/auth/login", {
+      const data = await axios.post(`${import.meta.env.VITE_API_ENDPOINT}/auth/login`, {
         email,
         password,
       });

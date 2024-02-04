@@ -11,6 +11,7 @@ import HackathonsBG from "./HackathonsBG";
 import NavBar from "../../constants/NavBar";
 import HackFooter from "../../components/hackathons/footer/HackFooter";
 import HackathonOrProjectCard from "../../components/hackathons/cards/HackathonOrProjectCard";
+import toast from "react-hot-toast";
 
 const Hackathons = () => {
   // NECESSARIES FOR FETCHING DATA
@@ -20,12 +21,14 @@ const Hackathons = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/post/");
+        const response = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/post`);
         const data = response.data;
         setHackathonsData(data.result);
+        toast.success("Fetched recent hackathons");
         console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        toast.error("Something went wrong");
       }
     };
 
