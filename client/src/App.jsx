@@ -11,10 +11,12 @@ import Chat from "./pages/chat/Chat";
 import Connect from "./pages/connect/Connect";
 import Login from "./pages/login/Login";
 
+
 // context
 import UserState from "./contexts/UserState";
 import SignUp from "./pages/signup/SignUp";
 import ProfileRegistration from "./pages/signup/ProfileRegistration";
+import HackathonDetails from "./pages/hackathon/HackathonDetails";
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
 					<Route path="/signup" element={<SignUp/>}/>
 					<Route path="/login" element={<Login/>}/>
 					<Route path="/details" element={<ProfileRegistration/>}/>
+					<Route path="/hackdetails/:id" element={<HackathonDetails />}/>
 				</Routes>
 			</Router>
 		</UserState>

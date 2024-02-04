@@ -6,13 +6,13 @@ import moment from "moment";
 import "./hackathonOrProjectCard.css";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const HackathonOrProjectCard = ({
   cardDetails,
   setSearchActive,
   setCurrentOpenHackathon,
 }) => {
-
   const [hasJoined, setHasJoined] = useState(false);
 
   const handleOpenHackathon = (hackathonId) => {
@@ -20,14 +20,13 @@ const HackathonOrProjectCard = ({
     setCurrentOpenHackathon(hackathonId);
   };
 
-  const handleJoinHackathon = async()=>{
+  const handleJoinHackathon = async () => {
     try {
-      const data = await axios.post()
+      const data = await axios.post();
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   // date formats
   const startDateFormatted = moment(cardDetails?.startDate).format("MMM DD");
@@ -45,7 +44,6 @@ const HackathonOrProjectCard = ({
               {startDateFormatted} - {endDateFormatted}
             </span>
           </div>
-          
         </div>
         <div className="w-28 flex justify-between">
           <div className="w-12 h-12 flex justify-center items-center bg-custom-dark rounded-full">
@@ -60,7 +58,7 @@ const HackathonOrProjectCard = ({
       <div className="card-middle h-3/6 w-full px-4 pb-2 flex flex-col justify-between items-center bg-custom-dark">
         <p className="text-zinc-600 w-full text-xl text-start">domain:</p>
         <div className="w-full flex justify-start items-center gap-6">
-          {cardDetails?.domain?.slice(0,3)?.map((item, index) => (
+          {cardDetails?.domain?.slice(0, 3)?.map((item, index) => (
             <div
               className="required-stack flex flex-start items-center px-1 rounded text-white"
               key={index}
@@ -68,9 +66,10 @@ const HackathonOrProjectCard = ({
               {item}
             </div>
           ))}
-        </div>        <p className="text-zinc-600 w-full text-xl text-start">requirements:</p>
+        </div>{" "}
+        <p className="text-zinc-600 w-full text-xl text-start">requirements:</p>
         <div className="w-full flex justify-start items-center gap-5">
-          {cardDetails?.requirement?.slice(0,3)?.map((item, index) => (
+          {cardDetails?.requirement?.slice(0, 3)?.map((item, index) => (
             <div
               className="required-stack flex flex-start items-center px-1 rounded text-white"
               key={index}
@@ -80,7 +79,6 @@ const HackathonOrProjectCard = ({
           ))}
         </div>
       </div>
-      
 
       <div className="card-footer h-1/4 w-full px-4 pt-2 flex justify-between items-center">
         <div className="h-full flex items-center w-fit justify-start gap-3">
@@ -91,7 +89,7 @@ const HackathonOrProjectCard = ({
             {cardDetails?.status}
           </span>
         </div>
-        <div
+        {/* <div
           className="hackathoncard-join-button px-3 py-2 flex items-center hover:cursor-pointer rounded-md text-custom-green text-lg"
           onClick={() => {
             if(hasJoined){
@@ -103,7 +101,14 @@ const HackathonOrProjectCard = ({
             }
           }}
         >{hasJoined ? "Leave" : "Join now"}
-        </div>
+        </div> */}
+        <Link
+          className="hackathoncard-join-button px-3 py-2 flex items-center hover:cursor-pointer rounded-md text-custom-green text-lg"
+          to={`/hackdetails/${cardDetails?._id}`}
+        >
+
+          See more
+        </Link>
       </div>
     </div>
   );
