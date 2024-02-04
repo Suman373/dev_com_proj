@@ -87,32 +87,49 @@ const NavBar = ({ currentPath }) => {
             <div className="menu-content text-white flex-col text-3xl text-center">
               <p
                 onClick={() => handleLinkClick("/home")}
-                className={`cursor-pointer p-4 ${currentPath === '/home' ? 'active-link' : ''}`}
-                
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/home" ? "active-link" : ""
+                }`}
               >
                 Home
               </p>
               <p
                 onClick={() => handleLinkClick("/connect")}
-                className={`cursor-pointer p-4 ${currentPath === '/connect' ? 'active-link' : ''}`}
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/connect" ? "active-link" : ""
+                }`}
               >
                 Connect
               </p>
               <p
                 onClick={() => handleLinkClick("/hackathons")}
-                className={`cursor-pointer p-4 ${currentPath === '/hackathons' ? 'active-link' : ''}`}
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/hackathons" ? "active-link" : ""
+                }`}
               >
                 Hackathons
               </p>
               <p
                 onClick={() => handleLinkClick("/profile")}
-                className={`cursor-pointer p-4 ${currentPath === '/profile' ? 'active-link' : ''}`}
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/profile" ? "active-link" : ""
+                }`}
               >
                 Profile
               </p>
               <p
+                onClick={() => handleLinkClick("/articles")}
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/articles" ? "active-link" : ""
+                }`}
+              >
+                Articles
+              </p>
+              <p
                 onClick={() => handleLinkClick("/chat")}
-                className={`cursor-pointer p-4 ${currentPath === '/chat' ? 'active-link' : ''}`}
+                className={`cursor-pointer p-4 ${
+                  currentPath === "/chat" ? "active-link" : ""
+                }`}
               >
                 Chat
               </p>
