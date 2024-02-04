@@ -4,16 +4,32 @@ import {
 } from "../../../assets/ForHackathonCard";
 import moment from "moment";
 import "./hackathonOrProjectCard.css";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const HackathonOrProjectCard = ({
   cardDetails,
   setSearchActive,
   setCurrentOpenHackathon,
 }) => {
+
+  const [hasJoined, setHasJoined] = useState(false);
+
   const handleOpenHackathon = (hackathonId) => {
     setSearchActive(true);
     setCurrentOpenHackathon(hackathonId);
   };
+
+  const handleJoinHackathon = async()=>{
+    try {
+      const data = await axios.post()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  // date formats
   const startDateFormatted = moment(cardDetails?.startDate).format("MMM DD");
   const endDateFormatted = moment(cardDetails?.endDate).format("MMM DD");
 
@@ -78,10 +94,15 @@ const HackathonOrProjectCard = ({
         <div
           className="hackathoncard-join-button px-3 py-2 flex items-center hover:cursor-pointer rounded-md text-custom-green text-lg"
           onClick={() => {
-            handleOpenHackathon(cardDetails?._id);
+            if(hasJoined){
+              setHasJoined(false);
+              toast.success("Left hackathon"); 
+            }else{
+              setHasJoined(true);
+              toast.success("Joined hackathon")
+            }
           }}
-        >
-          Join Now
+        >{hasJoined ? "Leave" : "Join now"}
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ const updateUser = async(req,res)=>{
         if(!userExist){
             return res.status(404).json({message:"User doesn't exist"});
         }
-        const updatedUser = await UserModel.findByIdAndUpdate(_id,req.body,{new:true},{username:1,name:1,email:1,totalPostCount:1,createdAt:1,createdPosts:1});
+        const updatedUser = await UserModel.findByIdAndUpdate(_id,{...req.body,completedDetails:true},{new:true},{username:1,name:1,email:1,totalPostCount:1,createdAt:1,createdPosts:1});
         if(!updatedUser){
             throw new Error("Could not update user");
         }

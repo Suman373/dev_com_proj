@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeBG from "../home/HomeBG";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,15 +18,17 @@ const Login = () => {
         email,
         password,
       });
-      if (!data?.data?.result) {
+      if (!data?.data) {
         console.log("err");
       }
       console.log(data?.data);
-      alert(data?.data?.message);
+      toast.success(data?.data?.message);
       localStorage.setItem("token", data?.data?.token);
+      localStorage.setItem("devcomUser",JSON.stringify(data?.data?.user));
       navigate("/home");
     } catch (err) {
       console.log(err);
+      toast.error("Something went wrong");
     }
   };
 
