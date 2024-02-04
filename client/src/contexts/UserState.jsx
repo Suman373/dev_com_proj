@@ -27,11 +27,13 @@ const UserState = (props) => {
         setUser({...newUser})
         setLoggedIn(true)
         localStorage.setItem('user', JSON.stringify(newUser))
+        localStorage.setItem('token', token);
     } 
 
     const logoutUser = () => {
         setUser({...blankUser})
         localStorage.removeItem('user')
+        localStorage.removeItem('token');
         setLoggedIn(false)
     }
 

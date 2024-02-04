@@ -44,7 +44,7 @@ const Login = () => {
                 Email
               </label>
               <input
-                className="mt-1 h-14 text-sm w-full border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 p-4 text-sm w-full border rounded-md font-sm bg-transparent text-custom-green"
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 value={email}
@@ -59,7 +59,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 h-14 text-sm p-2 w-full border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 text-sm p-4  w-full border rounded-md font-sm bg-transparent text-custom-green"
               />
             </div>
             <button

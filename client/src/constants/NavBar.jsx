@@ -154,7 +154,7 @@ const NavBar = ({currentPath}) => {
                         className="border rounded-3xl flex justify-center items-center px-10 pt-1 pb-2 text-2xl hover:cursor-pointer hover:scale-110 hover:bg-custom-slate-900 hover:bg-custom-hover"
                         onClick={() => userContext.updateUser(dummyUser)}
                     >
-                        signup
+                       home
                     </div>
             }
         </div>

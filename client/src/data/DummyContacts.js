@@ -1,6 +1,6 @@
 export const DummyContactsArray = [
     {
-        user: 'user1',
+        user: 'Kaustav Roy',
         dp: 'https://shorturl.at/jnAEN',
         chatId: 100,
         lastMessage: {

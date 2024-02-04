@@ -1,14 +1,8 @@
-import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-
-// context
-import UserState, { UserContext } from "../../contexts/UserState";
 
 import axios from "axios";
 
 import "./hackathons.css";
-
-import { DummyHackathonsAndProjectsArray } from "../../data/DummyHackathonsAndProjects";
 
 // bg
 import HackathonsBG from "./HackathonsBG";
@@ -17,13 +11,8 @@ import HackathonsBG from "./HackathonsBG";
 import NavBar from "../../constants/NavBar";
 import HackFooter from "../../components/hackathons/footer/HackFooter";
 import HackathonOrProjectCard from "../../components/hackathons/cards/HackathonOrProjectCard";
-import { RecentHackathonSVG } from "../../assets/ForHackathons";
-import HackathonContent from "../../components/hackathons/content/HackathonContent";
 
 const Hackathons = () => {
-  const userContext = useContext(UserContext);
-  const navigate = useNavigate();
-
   // NECESSARIES FOR FETCHING DATA
 
   const [hackathonsData, setHackathonsData] = useState([]);
@@ -34,7 +23,7 @@ const Hackathons = () => {
         const response = await axios.get("http://localhost:5000/post/");
         const data = response.data;
         setHackathonsData(data.result);
-        console(response.data)
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -45,7 +34,6 @@ const Hackathons = () => {
 
   const [searchActive, setSearchActive] = useState(false);
   const [currentOpenHackathon, setCurrentOpenHackathon] = useState(-1);
-  // const [leftPanelWidth, setLeftPanelWidth] = useState()
 
   const resetCurrentOpenHackathon = () => {
     setCurrentOpenHackathon(-1);
@@ -67,16 +55,6 @@ const Hackathons = () => {
             </p>
           </div>
         )}
-        {currentOpenHackathon > -1 ? (
-          <>
-            <div className="w-4/6 h-full flex item-center">
-              <HackathonContent
-                currentOpenHackathon={currentOpenHackathon}
-                resetCurrentOpenHackathon={resetCurrentOpenHackathon}
-              />
-            </div>
-          </>
-        ) : (
           <>
             <div
               id="hackathon-cards-section"
@@ -84,24 +62,22 @@ const Hackathons = () => {
                 searchActive ? "grid-cols-2 w-4/6" : "grid-cols-3 w-full"
               } gap-8 overflow-y-auto`}
             >
-              {
-                hackathonsData?.length > 0 ?
+              {hackathonsData?.length > 0 ? (
                 hackathonsData?.map((item, index) => (
-                    <HackathonOrProjectCard
-                      cardDetails={item}
-                      setSearchActive={setSearchActive}
-                      setCurrentOpenHackathon={setCurrentOpenHackathon}
-                      key={index}
-                    />
-                  ))
-                  :
-                  <>
-                    <p>No posts are available</p>
-                  </>
-              }
+                  <HackathonOrProjectCard
+                    cardDetails={item}
+                    setSearchActive={setSearchActive}
+                    setCurrentOpenHackathon={setCurrentOpenHackathon}
+                    key={index}
+                  />
+                ))
+              ) : (
+                <>
+                  <p>No posts are available</p>
+                </>
+              )}
             </div>
           </>
-        )}
       </div>
 
       {currentOpenHackathon === -1 && (

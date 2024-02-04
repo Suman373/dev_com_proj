@@ -3,17 +3,17 @@ export const DummyChatArray = [
         chatId: 100,
         history: [
             {
-                sender: 'user1',
+                sender: 'Kaustav Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Jyotirmoy Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Suman Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
@@ -38,17 +38,17 @@ export const DummyChatArray = [
         chatId: 101,
         history: [
             {
-                sender: 'user1',
+                sender: 'Kaustav Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Jyotirmoy Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Suman Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
@@ -73,17 +73,17 @@ export const DummyChatArray = [
         chatId: 102,
         history: [
             {
-                sender: 'user1',
+                sender: 'Kaustav Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Jyotirmoy Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Suman Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
@@ -108,17 +108,17 @@ export const DummyChatArray = [
         chatId: 103,
         history: [
             {
-                sender: 'user1',
+                sender: 'Kaustav Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Jyotirmoy Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Suman Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
@@ -143,17 +143,17 @@ export const DummyChatArray = [
         chatId: 104,
         history: [
             {
-                sender: 'user1',
+                sender: 'Kaustav Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Jyotirmoy Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },
             {
-                sender: 'user1',
+                sender: 'Suman Roy',
                 message: 'Morbi odio urna, vestibulum a lorem at, finibus vestibulum nulla.',
                 timestamp: '21:22'
             },

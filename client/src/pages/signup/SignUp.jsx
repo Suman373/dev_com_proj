@@ -1,44 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HomeBG from "../home/HomeBG";
-import axios from 'axios';
+import axios from "axios";
 
 const SignUp = () => {
-
   const navigate = useNavigate();
-  const [name,setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const registerUser = async()=>{
+  const registerUser = async () => {
     try {
-      if(!name || !email || !username || !password){
+      if (!name || !email || !username || !password) {
         alert("Fill all details");
       }
-      const data = await axios.post('http://localhost:5000/auth/register',{
-        name,email,username,password
+      const data = await axios.post("http://localhost:5000/auth/register", {
+        name,
+        email,
+        username,
+        password,
       });
-      if(!data?.data?.result){
+      if (!data?.data?.result) {
         console.log("err");
       }
       console.log(data?.data);
       alert(data?.data?.message);
-      localStorage.setItem('token',data?.data?.token);
-      if(data?.data?.user?.completedDetails===false){
-        navigate('/details');
-      }else{
-        navigate('/home');
+      localStorage.setItem("token", data?.data?.token);
+      if (data?.data?.user?.completedDetails === false) {
+        navigate("/details");
+      } else {
+        navigate("/home");
       }
     } catch (err) {
-      console.log(err);      
+      console.log(err);
     }
-  }
-
+  };
 
   return (
     <>
-    
       <HomeBG />
       <div className="absolute font-devcombold text-3xl pt-10 w-full h-full flex flex-col items-center justify-center display-column">
         <span className="font-devcombold text-7xl text-custom-green p-5">
@@ -52,11 +52,11 @@ const SignUp = () => {
                 Name
               </label>
               <input
-              required
-              value={name}
-              onChange={(e)=> setName(e.target.value)}
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type="text"
-                className="mt-1 h-14 text-sm p-2 border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 text-sm p-4 border rounded-md font-sm bg-transparent text-custom-green"
                 style={{ width: "480px" }}
               />
             </div>
@@ -65,11 +65,11 @@ const SignUp = () => {
                 Username
               </label>
               <input
-              required
-              value={username}
-              onChange={(e)=> setUsername(e.target.value)}
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 type="text"
-                className="mt-1 h-14 text-sm p-2 w-full border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 text-sm p-4  w-full border rounded-md font-sm bg-transparent text-custom-green"
               />
             </div>
             <div className="mb-4">
@@ -77,11 +77,11 @@ const SignUp = () => {
                 Email
               </label>
               <input
-              required
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                className="mt-1 h-14 text-sm w-full border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 text-sm w-full p-4 border rounded-md font-sm bg-transparent text-custom-green"
               />
             </div>
             <div className="mb-4">
@@ -89,11 +89,11 @@ const SignUp = () => {
                 Password
               </label>
               <input
-              required
-              value={password}
-              onChange={(e)=> setPassword(e.target.value)}
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className="mt-1 h-14 text-sm p-2 w-full border rounded-md font-sm bg-transparent text-custom-green"
+                className="mt-1 h-14 text-sm p-4  w-full border rounded-md font-sm bg-transparent text-custom-green"
               />
             </div>
             <button
