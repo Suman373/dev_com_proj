@@ -32,7 +32,7 @@ const SignUp = () => {
 				email,
 				username,
 				password,
-				modelIndex
+				avatarIndex: modelIndex
 			});
 			if (!data?.data) {
 				console.log("err");
