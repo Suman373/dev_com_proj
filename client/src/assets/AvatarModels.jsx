@@ -25,7 +25,7 @@ export const AvatarModels = [
         </svg>
     ),
     (
-        <svg width="595" height="892" viewBox="0 0 595 892" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="595" height="892" viewBox="0 0 595 892" fill="none" xmlns="http://www.w3.org/2000/svg" set>
             <path d="M305.555 191.845L304.699 162.483C304.699 162.483 340.606 165.324 348.287 161.359C348.287 161.359 356.567 118.111 346.251 85.6432L270.478 76.8359L265.087 120.132C262.535 112.651 242.613 104.079 237.106 114.792C225.173 138.005 267.841 153.635 267.841 153.635L263.508 192.198" fill="#E3BC81"/>
             <path opacity="0.399344" fillRule="evenodd" clipRule="evenodd" d="M304.699 162.483L280.487 157.324L304.583 173.499L304.699 162.483Z" fill="black"/>
             <path fillRule="evenodd" clipRule="evenodd" d="M324.671 114.5L333.039 134.826L323.011 134.953L324.671 114.5Z" fill="#AD6359"/>
