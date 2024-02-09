@@ -83,7 +83,7 @@ const Login = () => {
 				<div className="w-full h-20 absolute left-0 top-0 flex items-center justify-center z-10">
 					<div 	
 						className="absolute left-8 flex justify-center items-center h-10 w-10 rounded hover:bg-custom-hover hover:cursor-pointer"
-						onClick={() => navigate(-1)}
+						onClick={() => navigate('/home')}
 					>
 						<WhiteArrowIconSVG/>
 					</div>

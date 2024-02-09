@@ -105,7 +105,7 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
                 </span>
                 <span className='hover:cursor-text'>
                     {
-                        (currentlyAccepting === 'password' || currentlyAccepting === 'confirmedPassword') ?
+                        (currentlyAccepting === 'password' || currentlyAccepting === 'confirm_password') ?
                             <>
                                 {
                                     Array(data?.length).fill(0).map((_,index) => {
