@@ -20,6 +20,7 @@ const SignUp = () => {
 	const [currentlyAccepting, setCurrentlyAccepting] = useState('username')
 	const [modelIndex, setModelIndex] = useState(0)
 	const [error, setError] = useState('')
+	const [prompt, setPrompt] = useState('')
 
 	const signupUser = async(confirmedPassword) => {
 		try {
@@ -80,14 +81,14 @@ const SignUp = () => {
 					return
 				}
 				setPassword(data)
-				setCurrentlyAccepting('confirmedPassword')
+				setCurrentlyAccepting('confirm_password')
 				break
 		}
 	}
 
 	const decreaseCurrenlyAccepting = () => {
 		switch(currentlyAccepting) {
-			case 'confirmedPassword':
+			case 'confirm_password':
 				setCurrentlyAccepting('password')
 				break
 			case 'password':
@@ -97,6 +98,27 @@ const SignUp = () => {
 				setCurrentlyAccepting('username')
 		}
 	}
+
+	const updatePrompt = () => {
+		switch(currentlyAccepting) {
+			case 'username':
+				setPrompt('what should we call you?')
+				break
+			case 'email':
+				setPrompt('how should we reach out to you?')
+				break
+			case 'password':
+				setPrompt("enter password (make sure it's a strong one & secret)")
+				break
+			case 'confirm_password':
+				setPrompt("re-enter your password (so that we can know it's you)")
+				break
+		}
+	}
+
+	useEffect(() => {
+		updatePrompt()
+	}, [currentlyAccepting])
 
 	return (
 		<>
@@ -157,7 +179,7 @@ const SignUp = () => {
 									}
 									
 									<span className="text-xl text-gray-500">
-										enter {currentlyAccepting}
+										{prompt}
 									</span>
 								</>
 						}

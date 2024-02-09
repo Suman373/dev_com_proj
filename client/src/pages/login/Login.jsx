@@ -141,7 +141,9 @@ const Login = () => {
 										</span>
 								}
 								<span className="text-xl text-gray-500">
-									enter {currentlyAccepting}
+									{
+										
+									}
 								</span>
 							</>	
 					}
