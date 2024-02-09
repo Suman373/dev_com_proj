@@ -10,24 +10,29 @@ const userSchema = new mongoose.Schema({
     username:{
         type:String,
         trim:true,
-        unique:[true,"Username must be unique"],
+        unique:true,
         required:[true,"Username is required"]
     },
     name:{
         type:String,
         trim:true,
-        required:[true,"Name is required"]
     },
     email:{
         type:String,
         trim:true,
-        unique:[true,"Email must be unique"],
+        unique:true,
         required:[true,"Email is required"]
     },
     password:{
         type:String,
         trim:true,
         required:[true,"Password is required"]
+    },
+    avatarIndex:{
+        type:Number,
+        min:[0,"Minimum value required 0"],
+        max:[7,"Maximum value can be 7"],
+        default:0
     },
     education:{
         type:String,
@@ -71,7 +76,7 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true});
 
 // user registration 
-userSchema.statics.register = async function({username,name,email,password}){
+userSchema.statics.register = async function({username,email,password}){
     // exists
     const emailExists = await this.findOne({email});
     const usernameExists = await this.findOne({username});
@@ -87,7 +92,7 @@ userSchema.statics.register = async function({username,name,email,password}){
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password,salt);
 
-    const user = await this.create({username,name,email,password:hash});
+    const user = await this.create({username,email,password:hash});
     if(!user){
         throw new Error("User registration failed");
     }
@@ -95,9 +100,9 @@ userSchema.statics.register = async function({username,name,email,password}){
 }
 
 // user login 
-userSchema.statics.login = async function(email,password){
+userSchema.statics.login = async function(username,password){
     // not exists
-    const savedUser = await this.findOne({email}).exec();
+    const savedUser = await this.findOne({username});
     if(!savedUser){
         throw new Error("Email is not registered");
     }
