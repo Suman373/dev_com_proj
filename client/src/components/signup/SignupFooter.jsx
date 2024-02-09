@@ -129,10 +129,10 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
                 onClick={() => handleSearchClick()}
             >
                 {
-                    (currentlyAccepting === 'username') ?
-                        <span>next</span>
+                    (currentlyAccepting === 'confirmedPassword') ?
+                        <span>Signup</span>
                     :
-                        <span>login</span>
+                        <span>next</span>
                 }
             </div>
 
