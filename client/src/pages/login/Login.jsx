@@ -19,7 +19,7 @@ const Login = () => {
 
 	const [currentlyAccepting, setCurrentlyAccepting] = useState('username')
 
-	const loginUser = async (password) => {
+	const loginUser = async(password) => {
 		try {
 			if (!password) {
 				setError('password cannot be empty')
@@ -115,11 +115,6 @@ const Login = () => {
 					}
 					
 					
-				</div>
-				<div className="fixed top-20 right-0 h-[calc(100vh-5rem)] w-fit flex items-center overflow-hidden">
-					<p className="relative -translate-y-5 translate-x-32 -rotate-90 w-fit font-devcom text-2xl text-zinc-700 whitespace-nowrap ">
-						press "/" anytime to start collab
-					</p>
 				</div>
 				<div className="absolute bottom-24 left-16">
 					{
