@@ -22,7 +22,7 @@ const ProfileRegistration = () => {
 
   const navigate = useNavigate();
 
-  const { _id } = JSON.parse(localStorage.getItem('devcomUser'));
+  const [_id, set_id] = useState()
 
   const [education, setEducation] = useState("");
   const [profession, setProfession] = useState("");
@@ -30,6 +30,16 @@ const ProfileRegistration = () => {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [pin, setPin] = useState(undefined);
+
+  useEffect(() => {
+    const user = localStorage.getItem('devcomUser')
+    if (user) {
+      set_id(user)
+    }
+    if (!_id) {
+      navigate(-1)
+    }
+  }, [])
 
 
   const handleSaveDetails = async () => {

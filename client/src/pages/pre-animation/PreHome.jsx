@@ -6,44 +6,44 @@ import { TypeAnimation } from "react-type-animation";
 import Landing from "../../components/landing/Landing";
 
 const PreHome = () => {
-  const [showAnimation, setShowAnimation] = useState(true);
+	const [showAnimation, setShowAnimation] = useState(true);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowAnimation(false);
-    }, 6000);
-  }, []);
+	useEffect(() => {
+		setTimeout(() => {
+			setShowAnimation(false);
+		}, 0);
+	}, []);
 
-  return (
-    <>
-      {showAnimation ? (
-        <>
-          <div className="h-screen w-screen flex justify-center items-center bg-custom-dark font-devcombold text-[80px] text-custom-green">
-            <TypeAnimation
-              sequence={[
-                "Connect",
-                100,
-                "Collab",
-                100,
-                "Develop",
-                100,
-                "Devcom.",
-                100,
-              ]}
-              wrapper="span"
-              speed={0.5}
-              style={{ fontSize: "2em", display: "inline-block", fill: "none" }}
-              repeat={0}
-            />
-          </div>
-        </>
-      ) : (
-        <Landing />
-      )}
-    </>
-  );
+	return (
+		<>
+			{showAnimation ? (
+				<>
+					<div className="h-screen w-screen flex justify-center items-center bg-custom-dark font-devcombold text-[80px] text-custom-green">
+						<TypeAnimation
+							sequence={[
+								"Connect",
+								100,
+								"Collab",
+								100,
+								"Develop",
+								100,
+								"Devcom.",
+								100,
+							]}
+							wrapper="p"
+							speed={0.01}
+							style={{ fontSize: "2em", display: "inline-block", fill: "none" }}
+							repeat={0}
+						/>
+					</div>
+				</>
+			) : (
+				<Landing />
+			)}
+		</>
+	);
 };
 
 export default PreHome;
