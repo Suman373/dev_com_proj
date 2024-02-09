@@ -32,6 +32,7 @@ const SignUp = () => {
 				email,
 				username,
 				password,
+				modelIndex
 			});
 			if (!data?.data) {
 				console.log("err");
