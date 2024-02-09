@@ -75,7 +75,7 @@ const Login = () => {
 	return (
 		<>
 			<HomeBG/>
-			<div className="absolute top-0 left-0 overflow-hidden h-screen w-screen">
+			<div className="absolute top-0 left-0 overflow-hidden h-screen w-screen font-devcom">
 				<div className="w-full h-20 absolute left-0 top-0 flex items-center justify-center z-10">
 					<div 	
 						className="absolute left-8 flex justify-center items-center h-10 w-10 rounded hover:bg-custom-hover hover:cursor-pointer"
@@ -122,10 +122,20 @@ const Login = () => {
 					</p>
 				</div>
 				<div className="absolute bottom-24 left-16">
-					<span className="text-xl text-red-500">
-						{error}
-					</span>
+					{
+						(error?.length > 0) ?
+							<span className="text-xl text-red-500">
+								{error}
+							</span>
+						:
+							<span className="text-xl text-gray-500">
+								enter {currentlyAccepting}
+							</span>
+					}
+					
+
 				</div>
+
 				<LoginFooter 
 					currentlyAccepting={currentlyAccepting}
 					handleUsername={handleUsername}
