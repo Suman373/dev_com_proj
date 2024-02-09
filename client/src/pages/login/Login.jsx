@@ -19,7 +19,7 @@ const Login = () => {
 
 	const [currentlyAccepting, setCurrentlyAccepting] = useState('username')
 
-	const loginUser = async (password) => {
+	const loginUser = async(password) => {
 		try {
 			if (!password) {
 				setError('password cannot be empty')
@@ -72,14 +72,18 @@ const Login = () => {
 		setModelIndex(0)
 	}
 
+	const decreaseCurrenlyAccepting = () => {
+		setCurrentlyAccepting('username')
+	}
+
 	return (
 		<>
 			<HomeBG/>
-			<div className="absolute top-0 left-0 overflow-hidden h-screen w-screen">
+			<div className="absolute top-0 left-0 overflow-hidden h-screen w-screen font-devcom">
 				<div className="w-full h-20 absolute left-0 top-0 flex items-center justify-center z-10">
 					<div 	
 						className="absolute left-8 flex justify-center items-center h-10 w-10 rounded hover:bg-custom-hover hover:cursor-pointer"
-						onClick={() => navigate(-1)}
+						onClick={() => navigate('/home')}
 					>
 						<WhiteArrowIconSVG/>
 					</div>
@@ -116,16 +120,35 @@ const Login = () => {
 					
 					
 				</div>
-				<div className="fixed top-20 right-0 h-[calc(100vh-5rem)] w-fit flex items-center overflow-hidden">
-					<p className="relative -translate-y-5 translate-x-32 -rotate-90 w-fit font-devcom text-2xl text-zinc-700 whitespace-nowrap ">
-						press "/" anytime to start collab
-					</p>
-				</div>
 				<div className="absolute bottom-24 left-16">
-					<span className="text-xl text-red-500">
-						{error}
-					</span>
+					{
+						(error?.length > 0) ?
+							<span className="text-xl text-red-500">
+								{error}
+							</span>
+						:
+							<>
+								{
+									(currentlyAccepting !== 'username') &&
+										<span
+											className="flex justify-center items-center gap-2 p-2 w-fit text-sm text-custom-green hover:cursor-pointer rounded hover:bg-custom-hover"
+											onClick={() => decreaseCurrenlyAccepting()}
+										>
+											<span className="text-xl">
+												&lt;--
+											</span>
+											change previous entry
+										</span>
+								}
+								<span className="text-xl text-gray-500">
+									{
+										
+									}
+								</span>
+							</>	
+					}
 				</div>
+
 				<LoginFooter 
 					currentlyAccepting={currentlyAccepting}
 					handleUsername={handleUsername}
