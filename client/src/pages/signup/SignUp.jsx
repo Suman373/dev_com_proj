@@ -123,6 +123,14 @@ const SignUp = () => {
 		updatePrompt()
 	}, [currentlyAccepting])
 
+	const abs = (num1) => {
+		return (num1 >= 0) ? num1 : -num1;
+	}
+
+	const changeModelIndex = (incr) => {
+		setModelIndex(index => abs(index + (AvatarModels.length + incr)) % AvatarModels.length)
+	}
+
 	return (
 		<>
 			<HomeBG />
@@ -131,7 +139,7 @@ const SignUp = () => {
 					<div className="w-full h-20 absolute left-0 top-0 flex items-center justify-center z-10">
 						<div 	
 							className="absolute left-8 flex justify-center items-center h-10 w-10 rounded hover:bg-custom-hover hover:cursor-pointer"
-							onClick={() => navigate('/home')}
+							onClick={() => navigate('/')}
 						>
 							<WhiteArrowIconSVG/>
 						</div>
@@ -144,17 +152,29 @@ const SignUp = () => {
 						<div className="flex flex-col justify-center items-center gap-5">
 							<div className=" h-full w-full flex items-center justify-center">
 								<svg xmlns="http://www.w3.org/2000/svg" width="40rem" height="40rem">
-									{/* <circle cx="20rem" cy="20rem" r="21.72rem" stroke="#5BD45C" opacity="0.05" fill="none"/> */}
 									<circle cx="20rem" cy="20rem" r="18.22rem" stroke="#5BD45C" opacity="0.2" fill="none"/>
 									<circle cx="20rem" cy="20rem" r="14.56rem" stroke="#5BD45C" opacity="0.4" fill="none"/>
 									<circle cx="20rem" cy="20rem" r="10.88rem" stroke="#5BD45C" opacity="0.6" fill="none"/>
 									<circle cx="20rem" cy="20rem" r="7.22rem" stroke="#5BD45C" opacity="1" fill="none"/>
-									{/* <circle cx="20rem" cy="20rem" r="1px" stroke="#fff" opacity="1" fill="none"/> */}
 								</svg>
-								<div className="absolute top-32 w-full h-full flex items-start justify-center">
-									{
-										AvatarModels[modelIndex]
-									}
+								<div className="absolute top-0 w-full h-full flex items-center justify-center gap-52">
+									<div 
+										className="cursor-pointer"
+										onClick={() => changeModelIndex(-1)}
+									>
+										<i className='bx bxs-chevron-left text-9xl text-custom-green'></i>
+									</div>
+									<div className="relative flex items-center justify-center">
+										{
+											AvatarModels[modelIndex]
+										}
+									</div>
+									<div 
+										className="cursor-pointer"
+										onClick={() => changeModelIndex(1)}
+									>
+										<i className='bx bxs-chevron-right text-9xl text-custom-green'></i>
+									</div>
 								</div>
 							</div>
 						</div>
