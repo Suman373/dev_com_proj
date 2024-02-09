@@ -72,6 +72,10 @@ const Login = () => {
 		setModelIndex(0)
 	}
 
+	const decreaseCurrenlyAccepting = () => {
+		setCurrentlyAccepting('username')
+	}
+
 	return (
 		<>
 			<HomeBG/>
@@ -123,12 +127,24 @@ const Login = () => {
 								{error}
 							</span>
 						:
-							<span className="text-xl text-gray-500">
-								enter {currentlyAccepting}
-							</span>
+							<>
+								{
+									(currentlyAccepting !== 'username') &&
+										<span
+											className="flex justify-center items-center gap-2 p-2 w-fit text-sm text-custom-green hover:cursor-pointer rounded hover:bg-custom-hover"
+											onClick={() => decreaseCurrenlyAccepting()}
+										>
+											<span className="text-xl">
+												&lt;--
+											</span>
+											change previous entry
+										</span>
+								}
+								<span className="text-xl text-gray-500">
+									enter {currentlyAccepting}
+								</span>
+							</>	
 					}
-					
-
 				</div>
 
 				<LoginFooter 
