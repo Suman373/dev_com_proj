@@ -35,7 +35,7 @@ const HackathonDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await axios.get(`http://localhost:5000/post/${id}`);
+        const data = await axios.get(`${import.meta.env.VITE_API_ENDPOINT}/post/${id}`);
         if (!data?.data?.result) {
           toast.error("failed to load");
         }
