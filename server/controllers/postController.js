@@ -26,11 +26,11 @@ const getPostById = async (req, res) => {
         }
         const postExist = await PostModel.exists({ _id: _id });
         if (!postExist) return res.status(404).json({ message: "Post not found" });
-        const post = await PostModel.findOne({_id});
-        if(!post){
+        const post = await PostModel.findOne({ _id });
+        if (!post) {
             throw new Error("Could not fetch post");
         }
-        res.status(200).json({message:"Fetched post",result:post});
+        res.status(200).json({ message: "Fetched post", result: post });
 
     } catch (error) {
         console.log(error);
@@ -220,4 +220,8 @@ const deletePost = async (req, res) => {
 }
 
 
-module.exports = { getAllPosts, getPostById, addPost, editPost, joinPost, leavePost, getUserPosts, deletePost, getJoinees };
+module.exports = {
+    getAllPosts, getPostById, addPost,
+    editPost, joinPost, leavePost,
+    getUserPosts, deletePost, getJoinees
+};
