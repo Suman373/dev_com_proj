@@ -65,12 +65,8 @@ const NavBar = ({ currentPath }) => {
 
 	useEffect(() => {
 		if (notificationModalOpen) {
-			// const notificationActionButtons = document.getElementsByClassName('notification-action-button')
-			
-			// notificationActionButtons;
 			setTimeout(() => {
 				document.addEventListener('click', handleOutsideClick)
-				// setNotificationModal(document.getElementById('notification-modal'))
 			}, 1)
 		} else {
 			document.removeEventListener('click', handleOutsideClick)
