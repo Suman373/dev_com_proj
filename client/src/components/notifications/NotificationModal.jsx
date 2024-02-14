@@ -21,6 +21,14 @@ const NotificationModal = () => {
         setNotificationsArray(array => [...array.filter((_, ind) => ind !== index)])
     }
 
+    const acceptCollabUserRequest = (index) => {
+        setNotificationsArray(array => [...array.filter((_, ind) => ind !== index)])
+    }
+
+    const declineCollabUserRequest = (index) => {
+        setNotificationsArray(array => [...array.filter((_, ind) => ind !== index)])
+    }
+
     return (
         <div 
             id="notification-modal"
@@ -64,18 +72,18 @@ const NotificationModal = () => {
                                                 </p>
                                             </div>
                                             <div className="w-full flex justify-evenly items-center">
-                                                <button 
-                                                    className='notification-action-button w-24 py-1 flex justify-center items-center border rounded-lg border-custom-green text-custom-green'
-                                                    
+                                                <span 
+                                                    className='notification-action-button w-24 py-1 flex justify-center items-center border rounded-lg border-custom-green text-custom-green cursor-pointer'
+                                                    onClick={() => acceptCollabUserRequest(index)}
                                                 >
                                                     Accept
-                                                </button>
-                                                <button 
-                                                    className='notification-action-button w-24 py-1 flex justify-center items-center border rounded-lg border-custom-red text-custom-red'
-                                                    
+                                                </span>
+                                                <span 
+                                                    className='notification-action-button w-24 py-1 flex justify-center items-center border rounded-lg border-custom-red text-custom-red cursor-pointer'
+                                                    onClick={() => declineCollabUserRequest(index)}
                                                 >
                                                     Reject
-                                                </button>
+                                                </span>
 
                                             </div>
                                         </div>

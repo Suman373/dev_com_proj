@@ -29,7 +29,7 @@ const Profile = () => {
 
     const randomPosition = (index) => {
         const radiiSetNum = [
-            7.22, 10.88, 14.56, 18.22
+            7.22, 10.88, 14.56, 18.22, 21.72
         ]
         let minAngle = 0, maxAngle = Math.PI * 2
         let randomAngle = Math.random() * (maxAngle - minAngle)
@@ -126,7 +126,7 @@ const Profile = () => {
                     <div className="about-me w-1/4 h-full px-10 py-32 flex flex-col items-center gap-16">
                         <div className="w-full flex flex-col gap-2">
                             <p className="text-custom-green">About me</p>
-                            <p className=" text-left" style={{color: '#D9D9D9'}}>
+                            <p className="text-custom-gray text-left">
                                 {DummyUserData.about}
                             </p>
                         </div>
@@ -137,8 +137,8 @@ const Profile = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-1/2 h-full flex items-center justify-center ">
-                        <div className="h-full w-full flex items-center justify-center">
+                    <div className="w-1/2 h-full flex items-center justify-center relative">
+                    <div className="h-full w-full flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40rem" height="40rem">
                                 {/* <circle cx="20rem" cy="20rem" r="21.72rem" stroke="#5BD45C" opacity="0.05" fill="none"/> */}
                                 <circle cx="20rem" cy="20rem" r="18.22rem" stroke="#5BD45C" opacity="0.2" fill="none"/>
@@ -156,11 +156,16 @@ const Profile = () => {
                                 DummyUserData.skillSet.map((skill, index) => {
                                     let position = randomPosition(index)
                                     return (
-                                        <div className="absolute border border-custom-green rounded-full w-16 h-16 p-2 z-10 flex items-center justify-center" key={index} style={{
-                                            transform: `translateX(${position.x}rem) translateY(${position.y}rem)`
-                                        }}>
-                                            {skillSetSvgs[skill]}
-                                        </div>
+                                        <>
+                                            {                                        
+                                                (index < 4) &&
+                                                    <div className="absolute border border-custom-green rounded-full w-16 h-16 p-2 z-10 flex items-center justify-center" key={index} style={{
+                                                        transform: `translateX(${position.x}rem) translateY(${position.y}rem)`
+                                                    }}>
+                                                        {skillSetSvgs[skill]}
+                                                    </div>
+                                            }
+                                        </>
                                     )
                                 })
                             }
@@ -205,7 +210,7 @@ const Profile = () => {
                         />
                         <div className="absolute w-10 h-10">
                             {
-                                skillDataArray.map((_,index) => {
+                                DummyUserData.skillSet.map((skill, index) => {
                                     let position = getChartSvgPosition(index)
                                     return (
                                         <div 
@@ -215,7 +220,7 @@ const Profile = () => {
                                                 transform: `translateX(calc(${position.x - 16}px)) translateY(calc(${position.y - 16}px))`
                                             }}
                                         >
-                                            {skillSetSvgs[index]}
+                                            {skillSetSvgs[skill]}
                                         </div>
                                     )
                                 })

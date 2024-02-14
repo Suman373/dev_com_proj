@@ -11,6 +11,7 @@ const NavBar = ({ currentPath }) => {
 	const [displayLink, setDisplayLink] = useState();
 	const [isMenuOpen, setMenuOpen] = useState(false);
 	const [notificationModalOpen, setNotificationModalOpen] = useState(false)
+	// const [notificationModal, setNotificationModal] = useState()
 	const navigate = useNavigate();
 
 	function formatLink(link) {
@@ -48,19 +49,15 @@ const NavBar = ({ currentPath }) => {
 		navigate(path);
 	};
 
-	const toggleNotificationModal = () => {
-		setNotificationModalOpen(open => !open)
-	}
-
 	const closeNotificationModal = () => {
 		setNotificationModalOpen(false)
 	}
 
 	const handleOutsideClick= (e) => {
 		const notificationModal = document.getElementById('notification-modal')
-		const notificationButton = document.getElementById('notifications')
-		const notificationActionButtons = document.getElementsByClassName('notification-action-button')
-		if (e.target !== notificationButton && e.target !== notificationModal && !notificationModal.contains(e.target)) {
+		if (e.target.matches('.notification-action-button')) console.log('buttons')
+		if (!e.target.matches('.notification-action-button') && !e.target.contains(e.target) 
+			&& e.target !== notificationModal && !notificationModal.contains(e.target)) {
 			closeNotificationModal()
 			document.removeEventListener('click', handleOutsideClick)
 		}
@@ -68,16 +65,20 @@ const NavBar = ({ currentPath }) => {
 
 	useEffect(() => {
 		if (notificationModalOpen) {
+			// const notificationActionButtons = document.getElementsByClassName('notification-action-button')
+			
+			// notificationActionButtons;
 			setTimeout(() => {
 				document.addEventListener('click', handleOutsideClick)
+				// setNotificationModal(document.getElementById('notification-modal'))
 			}, 1)
 		} else {
 			document.removeEventListener('click', handleOutsideClick)
 		}
-	}, [ notificationModalOpen])
+	}, [notificationModalOpen])
 
 	return (
-		<div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-custom-dark bg-gradient-to-b to-transparent text-white font-devcom z-10">
+		<div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-gradient-to-b from-custom-dark to-transparent text-white font-devcom z-10">
 		<div
 			className="p-2 rounded-lg hover:cursor-pointer hover:bg-custom-hover"
 			onClick={toggleMenu}

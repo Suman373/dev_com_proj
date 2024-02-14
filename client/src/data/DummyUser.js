@@ -67,6 +67,6 @@ export const DummyUserData = {
         },
     ],
     skillSet: [
-        'react', 'cpp', 'js', 'java'
+        'react', 'cpp', 'js', 'java', 'springboot'
     ]
 }

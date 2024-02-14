@@ -14,6 +14,7 @@ export default {
             'custom-gray': '#D9D9D9'
           },
           colors: {
+            'custom-dark': '#181A1B',
             'custom-green': '#5BD45C',
             'custom-red': '#D45B5B',
             'custom-gray': '#D9D9D9'
