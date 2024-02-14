@@ -43,7 +43,7 @@ const ChatBody = ({chat}) => {
     return (
         <>
             <div 
-                className='custom-scrollbar absolute top-16 h-[calc(100%-8rem)] w-full overflow-y-auto'
+                className='custom-scrollbar relative top-16 h-[calc(100%-8rem)] w-full overflow-y-auto'
                 ref={chatBodyRef}
             >
                 <div className="flex flex-col justify-end px-4 py-3 gap-3">
@@ -71,17 +71,16 @@ const ChatBody = ({chat}) => {
                         })  
                     }
                 </div>
-                {
-                    isScrollingUp && 
-                        <div 
-                            className="arrow-bg fixed bottom-10 right-10 w-10 h-10 rounded-full flex justify-center items-center -rotate-90 z-20"
-                            onClick={() => showFromBottom()}
-                        >
-                            <WhiteArrowIconSVG/>
-                        </div>
-                }
             </div>
-            
+            {
+                isScrollingUp && 
+                    <div 
+                        className="arrow-bg absolute bottom-20 right-10 w-10 h-10 rounded-full flex justify-center items-center -rotate-90 z-20 cursor-pointer"
+                        onClick={() => showFromBottom()}
+                    >
+                        <WhiteArrowIconSVG/>
+                    </div>
+            }
         </>
     )
 }

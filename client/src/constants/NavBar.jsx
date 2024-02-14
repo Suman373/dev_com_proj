@@ -59,6 +59,7 @@ const NavBar = ({ currentPath }) => {
 	const handleOutsideClick= (e) => {
 		const notificationModal = document.getElementById('notification-modal')
 		const notificationButton = document.getElementById('notifications')
+		const notificationActionButtons = document.getElementsByClassName('notification-action-button')
 		if (e.target !== notificationButton && e.target !== notificationModal && !notificationModal.contains(e.target)) {
 			closeNotificationModal()
 			document.removeEventListener('click', handleOutsideClick)
@@ -76,7 +77,7 @@ const NavBar = ({ currentPath }) => {
 	}, [ notificationModalOpen])
 
 	return (
-		<div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-transparent text-white font-devcom z-10">
+		<div className="nav-blur w-full h-20 fixed top-0 left-0 flex justify-between px-12 items-center bg-custom-dark bg-gradient-to-b to-transparent text-white font-devcom z-10">
 		<div
 			className="p-2 rounded-lg hover:cursor-pointer hover:bg-custom-hover"
 			onClick={toggleMenu}
@@ -179,7 +180,7 @@ const NavBar = ({ currentPath }) => {
 		<div className="flex justify-between gap-5 items-center h-12">
 			<div 
 				id="notifications" 
-				className="relative flex items-center justify-center h-12 w-14 border-2 rounded-lg p-2 hover:cursor-pointer"
+				className={`relative flex items-center justify-center h-12 w-14 border-2 rounded-lg p-2 ${'hover:cursor-pointer'}`}
 				onClick={() => setNotificationModalOpen(true)}
 			>
 				<NotificationsPendingIcon/>
@@ -188,7 +189,10 @@ const NavBar = ({ currentPath }) => {
 						<NotificationModal/>
 				}
 			</div>
-			<div className="flex items-center justify-center h-12 w-14 border-2 rounded-lg p-2 hover:cursor-pointer">
+			<div 
+				className="flex items-center justify-center h-12 w-14 border-2 rounded-lg p-2 hover:cursor-pointer"
+				onClick={() => navigate('/chat')}
+			>
 				<ChatPendingIcon/>
 			</div>
 			<Link
