@@ -55,9 +55,8 @@ const NavBar = ({ currentPath }) => {
 
 	const handleOutsideClick= (e) => {
 		const notificationModal = document.getElementById('notification-modal')
-		if (e.target.matches('.notification-action-button')) console.log('buttons')
-		if (!e.target.matches('.notification-action-button') && !e.target.contains(e.target) 
-			&& e.target !== notificationModal && !notificationModal.contains(e.target)) {
+		if (!e.target.matches('.notification-action-button') && !e.target.closest('.notification-action-button') 
+			&& !e.target.matches('#notification-modal') && !notificationModal.contains(e.target)) {
 			closeNotificationModal()
 			document.removeEventListener('click', handleOutsideClick)
 		}
