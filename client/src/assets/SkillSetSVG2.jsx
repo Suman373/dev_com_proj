@@ -18,7 +18,8 @@ export const CppSvg = (
                 </clipPath>
             </defs>
         </svg>
-);
+)
+
 export const JsSvg = (
         <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
             <g clipPath="url(#clip0_49_144)">

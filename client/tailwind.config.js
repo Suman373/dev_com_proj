@@ -9,10 +9,15 @@ export default {
           backgroundColor: {
             'custom-dark': '#181A1B',
             'custom-hover': '#272a2b',
-            'custom-green': '#5BD45C'
+            'custom-green': '#5BD45C',
+            'custom-red': '#D45B5B',
+            'custom-gray': '#D9D9D9'
           },
           colors: {
-            'custom-green': '#5BD45C'
+            'custom-dark': '#181A1B',
+            'custom-green': '#5BD45C',
+            'custom-red': '#D45B5B',
+            'custom-gray': '#D9D9D9'
           },
           fontFamily: {
             devcom: ['Neue Machina', 'georgia'],
