@@ -88,7 +88,7 @@ const Login = () => {
 						<WhiteArrowIconSVG/>
 					</div>
 					<span className="font-devcombold text-white text-3xl">
-						Devcom.
+						DevCom.
 					</span>
 				</div>
 				<div className="absolute font-devcombold text-3xl py-20 w-full h-full flex flex-col items-center justify-center gap-10 display-column">
