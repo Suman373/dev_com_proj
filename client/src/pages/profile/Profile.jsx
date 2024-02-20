@@ -35,7 +35,7 @@ const Profile = () => {
     return (
         <div className="nav-blur noscroll w-screen h-screen overflow-y-auto">
             <ProfileBG/>
-            <NavBar currentPath={window.location.pathname}/>
+            <NavBar/>
             <div className="fixed top-20 left-12 text-custom-gray text-lg flex justify-evenly items-center gap-10 bg-gradient-to-r from-custom-dark to-transparent z-10">
                 <span 
                     className={`${(selectedSection === 'skillset') && 'border-b-2 border-custom-green'} cursor-pointer`}
