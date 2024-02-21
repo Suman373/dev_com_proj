@@ -7,7 +7,7 @@ import NavBar from "../../constants/NavBar"
 import ChatBG from "../chat/ChatBG"
 import ChatFinder from "../../components/devmate/ChatFinder"
 
-import { DummyDevMateEarlierChatArray, DummyDevMatePresentChatArray } from "../../data/DummyDevMate"
+import { DummyDevMateChatArray } from "../../data/DummyDevMate"
 import { DevMateAiIconSVG, NewChatAiIconSVG } from "../../assets/ForDevMate"
 import AIChatContainer from "../../components/devmate/AIChatContainer"
 
@@ -20,18 +20,17 @@ const DevMate = () => {
 
     useEffect(() => {
         if (searchParams?.id) {
-            DummyDevMateEarlierChatArray?.map((conv) => {
-                if (conv.id === searchParams.id) {
-                    setConversation(conv)
-                }
-            })
-            DummyDevMatePresentChatArray?.map((conv) => {
+            DummyDevMateChatArray?.map((conv) => {
                 if (conv.id === searchParams.id) {
                     setConversation(conv)
                 }
             })
         } 
     }, [])
+
+    const updateConversation = (id, request) => {
+        // const conversation.id 
+    }
 
     return (
         <>
@@ -66,7 +65,10 @@ const DevMate = () => {
                         </div>
                     </div>
                     <div className="devmate-containers w-3/4 h-full border rounded-lg">
-                        <AIChatContainer conversation={conversation}/>
+                        <AIChatContainer 
+                            conversation={conversation}
+                            updateConversation={updateConversation}
+                        />
                     </div>
                 </div>
             </div>

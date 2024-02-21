@@ -2,12 +2,12 @@ import { useState, useEffect } from "react"
 
 import { ShareIconSVG, HorizontalThreeDotsSVG, RenameIconSVG, DeleteIconSVG } from "../../assets/ForDevMate"
 
-import { DummyDevMateEarlierChatArray, DummyDevMatePresentChatArray } from "../../data/DummyDevMate"
+import { DummyDevMateChatArray } from "../../data/DummyDevMate"
 
 const ChatFinder = ({type, conversation, setConversation}) => {
     const [optionModalOpen, setOptionModalOpen] = useState(false)
 
-    const conversationArray = (type === 'older') ? DummyDevMateEarlierChatArray : DummyDevMatePresentChatArray
+    const today = new Date()
     const lastFollow = (type === 'older') ? 'Month' : 'Week'
 
     const handleOptionModalCloseOnOutsideClick = (e) => {
@@ -41,7 +41,7 @@ const ChatFinder = ({type, conversation, setConversation}) => {
             <span className="custom-dark-gray text-sm">Last {lastFollow}</span>
             <div className="noscroll relative w-full flex flex-col gap-2 overflow-y-auto overflow-x-hidden p-2">
                 {
-                    conversationArray?.map((conv, index) => {
+                    DummyDevMateChatArray?.map((conv, index) => {
                         return (
                             <div 
                                 className={`relative h-full w-full rounded py-1 px-2 cursor-pointer ${(conv.id === conversation?.id) && 'devmate-highlighted-chat'}`}

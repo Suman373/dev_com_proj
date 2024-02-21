@@ -18,14 +18,17 @@ const NavBar = () => {
 	function formatLink(link) {
 		let upperCaseActive = true;
 		let formattedLink = "";
+		let slashCount = 0;
 		for (let i = 0; i < link.length; i++) {
+			// if(slashCount > 1) break
 			let letter = link[i];
 			if (letter === " ") {
 				upperCaseActive = true;
 				continue;
 			}
 			if (letter === '/') {
-				continue;
+				// slashCount++;
+				break
 			}
 			if (upperCaseActive) {
 				formattedLink += letter.toString().toUpperCase();
