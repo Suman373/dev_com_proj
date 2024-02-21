@@ -12,9 +12,10 @@ router.get('/received/:userId', controllers.getReceivedConn);
 // send connection req
 router.post('/',controllers.sendConn);
 // accept connection
-router.post('/accept/:id',); // connection _id
+router.post('/:id/accept',controllers.acceptConn); // connection _id
 // reject connection
-router.post('/reject/:id',); // " " " " 
-
+router.post('/:id/reject', controllers.rejectConn); // " " " " 
+// remove connection
+router.post('/:id/remove', controllers.removeConn);
 
 module.exports = router;

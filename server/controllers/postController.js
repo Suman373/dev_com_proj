@@ -155,14 +155,8 @@ const getUserPosts = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(_id)) {
             return res.status(422).json({ message: "Id not valid" });
         }
-        const userPosts = await PostModel.find({ userId: _id }, (err, result) => {
-            if (err) {
-                console.log(err);
-                throw new Error(err);
-            } else {
-                console.log(result);
-            }
-        });
+        const userPosts = await PostModel.find({ userId: _id });
+        if(!userPosts) return res.status(404).json({message:"User Posts not found"});
         res.status(200).json({ message: "Fetched Posts by User", result: userPosts });
 
     } catch (error) {

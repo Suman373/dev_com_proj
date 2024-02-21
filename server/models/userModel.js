@@ -71,7 +71,8 @@ const userSchema = new mongoose.Schema({
         ref:'PostModel'
     },
     connections:{
-        
+        type:[mongoose.SchemaTypes.ObjectId],
+        ref:'UserModel'
     }
 },{timestamps:true});
 
