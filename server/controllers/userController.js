@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // get all users
 const getUsers = async (req, res) => {
     try {
-        const users = await UserModel.find({}, { username: 1, name: 1, email: 1, totalPostCount: 1, createdAt: 1, createdPosts: 1 });
+        const users = await UserModel.find({}, { username: 1, name: 1, email: 1, totalPostCount: 1, createdAt: 1, createdPosts: 1, connections:1 });
         if (!users) {
             return res.status(404).json({ message: "Could not fetch users", result: null });
         }

@@ -10,6 +10,7 @@ const io = socket(server);
 const user = require('./routes/userRoutes');
 const post = require('./routes/postRoute');
 const auth = require('./routes/authRoute');
+const connection = require('./routes/connectionRoute');
 const verifyToken = require('./middleware/verifyToken');
 const EXPRESS_PORT = process.env.EXPRESS_PORT || 5000;
 const IO_PORT = process.env.IO_PORT || 5500;
@@ -30,6 +31,7 @@ app.use('/auth',auth);
 // app.use(verifyToken); // auth middleware for api protection using authorized user 
 app.use('/user',user);
 app.use('/post',post);
+app.use('/connection',connection);
 
 
 // socket event handlers
