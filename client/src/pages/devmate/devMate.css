@@ -13,3 +13,13 @@
 .devmate-highlighted-chat {
     background-color: #242424;
 }
+
+.chat-initiate-box {
+    color: #8D8D8D;
+    border-color: #3c3c3c;
+    background-color: #1E1E1E;
+}
+
+.devmate-chat-footer {
+    outline-color: #3c3c3c;
+}

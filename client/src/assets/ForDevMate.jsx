@@ -57,3 +57,11 @@ export const NewChatAiIconSVG = () => {
 
     )
 }
+
+export const SendChatIconSVG = () => {
+    return (
+        <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.66626 11L0.860927 3.75066C0.63026 1.676 2.76626 0.151995 4.65293 1.04666L20.5783 8.59066C22.6116 9.55333 22.6116 12.4467 20.5783 13.4093L4.65293 20.9547C2.76626 21.848 0.63026 20.3253 0.860927 18.2507L1.66626 11ZM1.66626 11H10.9996" stroke="#5BD45C" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    )
+}

@@ -39,7 +39,7 @@ const DevMate = () => {
             <ChatBG/>
             <div className="absolute pt-20 w-full h-full flex items-center justify-start gap-20 font-devcom z-0 overflow-hidden">
                 <div className="w-full h-full px-10 py-12 flex items-center justify-between gap-4">
-                    <div className="w-1/4 h-full border">
+                    <div className="w-1/4 h-full">
                         <div className="h-full flex flex-col justify-between gap-2">
                             <div className="h-[14%] w-full flex items-center justify-between overflow-hidden gap-2">
                                 <div className="devmate-containers h-full rounded-lg flex flex-1 justify-center items-center gap-2 p-2 cursor-pointer hover:bg-custom-hover">
