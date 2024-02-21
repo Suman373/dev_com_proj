@@ -23,3 +23,8 @@
 .devmate-chat-footer {
     outline-color: #3c3c3c;
 }
+
+.ai-chat-text {
+    line-height: 30px;
+    font-weight: 300;
+}

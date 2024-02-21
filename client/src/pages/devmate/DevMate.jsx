@@ -64,7 +64,7 @@ const DevMate = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="devmate-containers w-3/4 h-full border rounded-lg">
+                    <div className="devmate-containers w-3/4 h-full rounded-lg">
                         <AIChatContainer 
                             conversation={conversation}
                             updateConversation={updateConversation}

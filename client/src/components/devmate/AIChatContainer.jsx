@@ -1,18 +1,27 @@
+import { useContext } from "react"
+
+import { UserContext } from "../../contexts/UserState"
+
 import { DevMateAiIconSVG, LargeDevMateAiIconSVG, SendChatIconSVG } from "../../assets/ForDevMate"
 
 const AIChatContainer = ({conversation, updateConversation}) => {
 
+    const userContext = useContext(UserContext)
+
     const AIChatDP = ({type}) => {
         return (
-            <div className="w-10 h-10 flex justify-center items-center border">
+            <div className="mt-2 w-12 h-12 flex justify-center items-center">
                 {
                     (type === 'request') ?
-                        <div className="h-12 w-12 p-1 border border-custom-green rounded-lg">
-                            <DevMateAiIconSVG/>
+                        <div className="h-12 w-12 border border-custom-gray rounded-lg overflow-hidden">
+                            <img 
+                                src="https://portal.bilardo.gov.tr/assets/pages/media/profile/profile_user.jpg"
+                                className="h-12 w-12 object-cover"    
+                            />
                         </div>
                     :
-                        <div className="h-12 w-12 p-1 border border-custom-gray rounded-lg">
-                        
+                        <div className="h-12 w-12 p-1 border flex items-center justify-center border-custom-green rounded-lg">
+                            <DevMateAiIconSVG/>
                         </div>
                 }
             </div>
@@ -20,33 +29,33 @@ const AIChatContainer = ({conversation, updateConversation}) => {
     }
 
     return (
-        <div className="w-full h-full rounded-lg p-2 flex flex-col justify-center items-center border border-red-500 text-white">
-            <div className="h-[86%] w-full flex flex-col">
+        <div className="w-full h-full rounded-lg p-2 flex flex-col justify-center items-center">
+            <div className="h-[86%] w-full flex flex-col overflow-auto custom-scrollbar text-[#D9D9D9]">
                 {
                     (conversation) ? 
-                        <div className="h-full w-full border border-blue-600 flex flex-col justify-end items-center p-2">
-                            <div className="h-full w-full py-2 px-4 border flex flex-col gap-2">
+                        <div className="h-full w-full flex flex-col justify-end items-center p-2">
+                            <div className="h-full w-full py-2 px-20 flex flex-col gap-2 text-custom-gray">
                                 {
                                     conversation?.chats?.map((conv, index) => {
 
                                         return (
-                                            <>
+                                            <div key={index}>
                                                 {   
                                                     (conv.request) &&
-                                                        <div className="w-full p-2 flex justify-between items-start gap-2">
+                                                        <div className="w-full p-2 flex justify-between items-start gap-6">
                                                             <AIChatDP type={'request'}/>
-                                                            <p>{conv.request}</p>
+                                                            <p className="ai-chat-text">{conv.request}</p>
                                                         </div>
                                                 }
                                                 {   
                                                     (conv.response) && 
-                                                        <div className="w-full p-2 flex justify-between items-start gap-2">
+                                                        <div className="w-full p-2 flex justify-between items-start gap-6">
                                                             <AIChatDP type={'response'}/>
-                                                            <p>{conv.response}</p>
+                                                            <p className="ai-chat-text">{conv.response}</p>
                                                         </div>   
                                                 }
                                                 
-                                            </>
+                                            </div>
                                         )
                                     })
                                 }
