@@ -59,7 +59,7 @@ const Chat = () => {
     return (
         <>
             <ChatBG/>
-            <NavBar currentPath={window.location.pathname}/>
+            <NavBar/>
             <div className="absolute pt-20 w-full h-full flex flex-col items-center justify-start gap-20 font-devcom z-0">
                 <div className="w-full h-full px-10 py-12 flex items-center justify-between">
                     <div className="custom-scrollbar w-1/4 h-full overflow-y-auto">
