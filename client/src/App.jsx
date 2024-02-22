@@ -10,6 +10,7 @@ import Articles from "./pages/article/Articles";
 import Chat from "./pages/chat/Chat";
 import Connect from "./pages/connect/Connect";
 import Login from "./pages/login/Login";
+import DevMate from "./pages/devmate/DevMate";
 
 
 // context
@@ -35,6 +36,8 @@ function App() {
 					<Route path="/login" element={<Login/>}/>
 					<Route path="/details" element={<ProfileRegistration/>}/>
 					<Route path="/hackdetails/:id" element={<HackathonDetails/>}/>
+					<Route path="/devmate" element={<DevMate/>}/>
+					<Route path="/devmate/:id" element={<DevMate/>}/>
 				</Routes>
 			</Router>
 		</UserState>

@@ -12,7 +12,7 @@ import { AvatarModels } from "../../assets/AvatarModels";
 
 const SignUp = () => {
 	const navigate = useNavigate();
-	const [user, setuser] = useState("");
+	// const [user, setuser] = useState("");
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");

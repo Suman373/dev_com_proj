@@ -5,7 +5,7 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
     const [focusOnInput, setFocusOnInput] = useState(true)
     const [cursorShow, setCursorShow] = useState(false)
 
-    const handleSearchClick = () => {
+    const handleSubmitClick = () => {
         if (currentlyAccepting === 'confirmedPassword') {
             signupUser(data)
         }
@@ -14,6 +14,8 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
 
     useEffect(() => {
         setData('')
+        setFocusOnInput(true)
+        setCursorShow(true)
     }, [currentlyAccepting])
 
     const restoreFocus = () => {
@@ -25,10 +27,18 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
         setError('')
     }
 
+    useEffect(() => {
+        console.log(data)
+    }, [data])
+
     const pressBackspace = () => {
         setData(data => data?.slice(0, data.length - 1))
         setError('')
     }
+
+    // const pressEnter = () => {
+    //     handleSubmitClick()
+    // }
 
     const handleSearchInputEnter = (e) => {
         const allowedKeys = [
@@ -40,21 +50,28 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
         if (allowedKeys.includes(e.key)) {
             inputAlphabets(e.key)
             return
-        }
+        } 
         if (e.key === 'Backspace') {
             pressBackspace()
             return 
-        }
+        } 
+        // if (e.key === 'Enter' || e.key == 'enter') {
+        //     pressEnter()
+        //     return
+        // }
     }
 
     useEffect(() => {
         if (focusOnInput) {
             document.addEventListener('keydown', handleSearchInputEnter)
+            // document.addEventListener('keydown', pressEnter)
         } else {
             document.removeEventListener('keydown', handleSearchInputEnter)
+            // document.removeEventListener('keydown', pressEnter)
         }
         return () => {
             document.removeEventListener('keydown', handleSearchInputEnter)
+            // document.removeEventListener('keydown', pressEnter)
         }
     }, [focusOnInput])
 
@@ -126,7 +143,7 @@ const SignupFooter = ({ currentlyAccepting, handleAcceptProfileData, signupUser,
             </div>
             <div 
                 className='h-16 w-1/5 flex justify-center items-center shadow-custom text-white text-3xl font-devcom hover:cursor-pointer backdrop-blur-md'
-                onClick={() => handleSearchClick()}
+                onClick={() => handleSubmitClick()}
             >
                 {
                     (currentlyAccepting === 'confirm_password') ?

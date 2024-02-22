@@ -7,28 +7,35 @@ import "./navbar.css";
 import { ChatPendingIcon, NavDevCom, NotificationsPendingIcon } from "../assets/ForNavBar";
 import NotificationModal from "../components/notifications/NotificationModal";
 
-const NavBar = ({ currentPath }) => {
+const NavBar = () => {
 	const [displayLink, setDisplayLink] = useState();
 	const [isMenuOpen, setMenuOpen] = useState(false);
 	const [notificationModalOpen, setNotificationModalOpen] = useState(false)
-	// const [notificationModal, setNotificationModal] = useState()
-	const navigate = useNavigate();
+	
+	const navigate = useNavigate()
+	const currentPath = window.location.pathname
 
 	function formatLink(link) {
 		let upperCaseActive = true;
 		let formattedLink = "";
+		let slashCount = 0;
 		for (let i = 0; i < link.length; i++) {
-		let letter = link[i];
-		if (letter === " ") {
-			upperCaseActive = true;
-			continue;
-		}
-		if (upperCaseActive) {
-			formattedLink += letter.toString().toUpperCase();
-			upperCaseActive = false;
-		} else {
-			formattedLink += letter.toString();
-		}
+			// if(slashCount > 1) break
+			let letter = link[i];
+			if (letter === " ") {
+				upperCaseActive = true;
+				continue;
+			}
+			if (letter === '/') {
+				// slashCount++;
+				break
+			}
+			if (upperCaseActive) {
+				formattedLink += letter.toString().toUpperCase();
+				upperCaseActive = false;
+			} else {
+				formattedLink += letter.toString();
+			}
 		}
 		return formattedLink;
 	}
