@@ -28,10 +28,6 @@ const DevMate = () => {
         } 
     }, [])
 
-    const updateConversation = (id, request) => {
-        // const conversation.id 
-    }
-
     return (
         <>
             <NavBar/>
@@ -67,7 +63,7 @@ const DevMate = () => {
                     <div className="devmate-containers w-3/4 h-full rounded-lg">
                         <AIChatContainer 
                             conversation={conversation}
-                            updateConversation={updateConversation}
+                            // addConversation={addConversation}
                         />
                     </div>
                 </div>
