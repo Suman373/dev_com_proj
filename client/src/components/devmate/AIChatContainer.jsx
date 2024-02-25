@@ -34,7 +34,13 @@ const AIChatContainer = ({conversation}) => {
         setInputQuery(e.target.value)
     }
 
-    const addConversation = (id) => {
+    const handleEnterPress = (e) => {
+        if (e.key === 'Enter' || e.key === 'enter') {
+            addConversation()
+        }
+    }
+
+    const addConversation = () => {
         if (inputQuery?.length > 0) {
             conversation?.chats?.push({request: inputQuery})
             setInputQuery('')
@@ -106,6 +112,7 @@ const AIChatContainer = ({conversation}) => {
                         type="text"
                         value={inputQuery}
                         onChange={handleQueryChange}
+                        onKeyDown={handleEnterPress}
                         placeholder="Write your query here..."
                     />
                     <div 
