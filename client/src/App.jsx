@@ -18,6 +18,7 @@ import UserState from "./contexts/UserState";
 import SignUp from "./pages/signup/SignUp";
 import ProfileRegistration from "./pages/signup/ProfileRegistration";
 import HackathonDetails from "./pages/hackathon/HackathonDetails";
+import Collaborate from "./pages/collaborate/Collaborate";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
 					<Route path="/hackdetails/:id" element={<HackathonDetails/>}/>
 					<Route path="/devmate" element={<DevMate/>}/>
 					<Route path="/devmate/:id" element={<DevMate/>}/>
+					<Route path="/collaborate" element={<Collaborate/>}/>
 				</Routes>
 			</Router>
 		</UserState>
