@@ -30,7 +30,6 @@ export const DummyPendingConnectionRequestsArray = [
 ]
 
 export const DummyPastConnectionRequestsArray = [
-    ,
     {
         type: 'past',
         username: 'Kaustav Roy',
