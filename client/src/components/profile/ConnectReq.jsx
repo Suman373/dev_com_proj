@@ -3,56 +3,11 @@ import { useState, useEffect } from 'react'
 import { DummyPendingConnectionRequestsArray, DummyPastConnectionRequestsArray } from '../../data/DummyConnectRequests';
 import { CancelConnectUserIconSVG } from '../../assets/ForProfile';
 
+import { TimeGap } from '../../utils/TimeGap';
+
 const ConnectReq = () => {
 
     const [currentlyShowing, setCurrentlyShowing] = useState('sent')
-
-    const TimeGap = (date) => {
-		
-		const postTime = new Date(date);
-		const currTime = new Date();
-
-		// year ago
-		let yearsGap = currTime.getFullYear() - postTime.getFullYear();
-		if (yearsGap > 0) {
-		return `${yearsGap} year${yearsGap > 1 ? "s" : ""} ago`;
-		}
-
-		// months ago
-		let monthsGap = currTime.getMonth() - postTime.getMonth();
-		if (monthsGap > 0) {
-		return `${monthsGap} month${monthsGap > 1 ? "s" : ""} ago`;
-		}
-
-		// weeks ago
-		let daysGap = currTime.getDate() - postTime.getDate();
-		if (daysGap > 7) {
-		return `${Math.round(daysGap / 7)} week${
-			Math.round(daysGap / 7) > 1 ? "s" : ""
-		} ago`;
-		}
-
-		// days ago
-		if (daysGap > 0) {
-		return `${daysGap} day${daysGap > 1 ? "s" : ""} ago`;
-		}
-
-		// hours ago
-		let hoursGap = currTime.getHours() - postTime.getHours();
-		if (hoursGap > 0) {
-		return `${hoursGap} hour${hoursGap > 1 ? "s" : ""} ago`;
-		}
-
-		// minutes ago
-		let minutesGap = currTime.getMinutes() - postTime.getMinutes();
-		if (minutesGap > 0) {
-		return `${minutesGap} minute${minutesGap > 1 ? "s" : ""} ago`;
-		}
-
-		// seconds ago
-		let secondsGap = currTime.getSeconds() - postTime.getSeconds();
-		return `${secondsGap} second${secondsGap > 1 ? "s" : ""} ago`;
-	};
 
     const ConnectReqCard = ({card}) => {
         return (
@@ -85,7 +40,7 @@ const ConnectReq = () => {
     }
 
     return (
-        <div className="noscroll absolute top-16 left-0 h-[calc(100vh-4rem)] w-full px-10 pt-12 pb-4 flex overflow-hidden font-devcom">
+        <div className="noscroll absolute top-16 left-0 h-[calc(100vh-4rem)] w-full px-10 pt-12 pb-4 flex overflow-hidden font-devcom ">
             <div
                 id="connectreq-left-panel"
                 className="w-2/6 h-full px-2 flex flex-col justify-start items-start gap-16"
