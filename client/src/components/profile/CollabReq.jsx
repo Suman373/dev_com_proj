@@ -13,7 +13,7 @@ const CollabReq = () => {
 
     const CollabReqCard = ({card}) => {
         return (
-            <div className='w-72 h-32 rounded-lg bg-[#1e1e1e]'>
+            <div className='w-72 rounded-lg bg-[#1e1e1e] py-2'>
                 <div className="flex h-[65%] w-full px-3 gap-2 items-center justify-center">
                     <div className="flex flex-col w-full">
                         <div className="w-full flex justify-between items-center">
@@ -25,7 +25,7 @@ const CollabReq = () => {
                                 <BehanceIconSvg/>
                             </div>
                         </div>
-                        <p className='text-base font-devcomthin text-[#5C5757] truncate'>
+                        <p className='text-base font-devcomthin text-[#5C5757] truncate mb-1'>
                             {card.username}
                         </p>
                         <div className="flex justify-left items-center gap-3">
@@ -66,18 +66,26 @@ const CollabReq = () => {
                 <p className="font-devcombold font-extrabold text-5xl xl:text-6xl text-custom-green">
                     Collab Requests
                 </p>
-                <div className="flex gap-5">
-                    <div 
-                        className={`border ${(currentlyShowing === 'sent') ? 'border-custom-green text-custom-green' : 'border-custom-gray text-custom-gray'} rounded-lg px-3 py-1 bg-[#D9D9D9] bg-opacity-10 cursor-pointer`}
-                        onClick={() => setCurrentlyShowing('sent')}
-                    >
-                        Sent
+                <div className="flex flex-col gap-5">
+                    <div className="flex gap-5">
+                        <div 
+                            className={`border ${(currentlyShowing === 'sent') ? 'border-custom-green text-custom-green' : 'border-custom-gray text-custom-gray'} rounded px-10 py-1 bg-[#D9D9D9] bg-opacity-10 cursor-pointer text-xl`}
+                            onClick={() => setCurrentlyShowing('sent')}
+                        >
+                            Sent
+                        </div>
+                        <div 
+                            className={`border ${(currentlyShowing === 'received') ? 'border-custom-green text-custom-green' : 'border-custom-gray text-custom-gray'} rounded px-10 py-1 bg-[#D9D9D9] bg-opacity-10 cursor-pointer text-xl`}
+                            onClick={() => setCurrentlyShowing('received')}
+                        >
+                            Received
+                        </div>
                     </div>
                     <div 
-                        className={`border ${(currentlyShowing === 'received') ? 'border-custom-green text-custom-green' : 'border-custom-gray text-custom-gray'} rounded-lg px-3 py-1 bg-[#D9D9D9] bg-opacity-10 cursor-pointer`}
-                        onClick={() => setCurrentlyShowing('received')}
+                        className={`border ${(currentlyShowing === 'all') ? 'border-custom-green text-custom-green' : 'border-custom-gray text-custom-gray'} rounded px-10 py-1 bg-[#D9D9D9] bg-opacity-10 cursor-pointer text-xl w-fit`}
+                        onClick={() => setCurrentlyShowing('all')}
                     >
-                        Received
+                        All Connections
                     </div>
                 </div>
             </div>
