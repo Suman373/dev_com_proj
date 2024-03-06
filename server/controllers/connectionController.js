@@ -1,4 +1,4 @@
-const { default: mongoose, connections } = require('mongoose');
+const { default: mongoose, connections, Connection } = require('mongoose');
 const ConnectionModel = require('../models/connectionModel');
 const UserModel = require('../models/userModel');
 
@@ -47,6 +47,24 @@ const getReceivedConn = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(400).json({ message: error?.message });
+    }
+}
+
+// get older connections
+const getOldConn = async(req,res)=>{
+    try {
+        const {userId:_id} = await req.params;
+        if(!mongoose.Types.ObjectId.isValid(_id) || !_id){
+            return res.status(422).json({message:"Invalid Id"});
+        }
+        const user = await UserModel.exists({_id:_id});
+        if(!user) return res.status(404).json({message:"User with id doesn't exist"});
+        const connections = await ConnectionModel.find({receiverId:_id, status:{$ne:"Pending"}});
+        if(!connections) throw new Error("Failed to fetch older conenctions");
+        res.status(200).json({message:"Fetched older connection requests",result:connections});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({message:error?.message});
     }
 }
 
@@ -132,6 +150,6 @@ const removeConn = async(req,res)=>{
 }
 
 module.exports = {
-    getAllConn, getSentConn, getReceivedConn,
+    getAllConn, getSentConn, getReceivedConn, getOldConn,
     sendConn, acceptConn, rejectConn, removeConn
 }

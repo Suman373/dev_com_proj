@@ -9,6 +9,8 @@ router.get('/getall', controllers.getAllConn);
 router.get('/sent/:userId', controllers.getSentConn);
 // get received connections
 router.get('/received/:userId', controllers.getReceivedConn);
+// get older connections (accepted/rejected)
+router.get('/getold/:userId', controllers.getOldConn);
 // send connection req
 router.post('/',controllers.sendConn);
 // accept connection
