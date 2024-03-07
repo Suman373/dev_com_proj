@@ -105,7 +105,8 @@ const AIChatContainer = ({conversation}) => {
                         </div>
                 }
             </div>
-            <div className="h-[14%] w-full p-2">
+            <div className="h-[14%] w-full p-2 relative">
+                <div className="absolute bottom-16 z-10 bg-gradient-to-t from-[#181818] to-transparent w-[calc(100%-1rem)] h-28"></div>
                 <div className="relative h-full w-full flex items-center">
                     <input 
                         className="devmate-chat-footer h-full w-full bg-transparent text-gray-400 focus:outline-gray-600 outline-none rounded-lg pl-5 pr-16 py-2" 
