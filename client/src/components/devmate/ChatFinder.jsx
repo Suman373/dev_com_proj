@@ -37,19 +37,19 @@ const ChatFinder = ({type, conversation, setConversation}) => {
     }, [optionModalOpen])
 
     return (
-        <div className="last-month flex flex-col justify-start items-center w-full min-h-40 max-h-52 mt-5">
-            <span className="custom-dark-gray text-sm">Last {lastFollow}</span>
+        <div className="last-month flex flex-col justify-start items-center w-full min-h-40 max-h-52 mt-3">
+            <span className="custom-dark-gray text-sm mb-1">Last {lastFollow}</span>
             <div className="noscroll relative w-full flex flex-col gap-2 overflow-y-auto overflow-x-hidden p-2">
                 {
                     DummyDevMateChatArray?.map((conv, index) => {
                         return (
                             <div 
-                                className={`relative h-full w-full rounded py-1 px-2 cursor-pointer ${(conv.id === conversation?.id) && 'devmate-highlighted-chat'}`}
+                                className={`relative h-full w-full rounded py-1 px-2 cursor-pointer ${(conv.id === conversation?.id) ? 'devmate-highlighted-chat' : 'hover:bg-custom-hover'}`}
                                 key={index}
                                 onClick={() => setConversation(conv)}
                             >
                                 <p className={`${(conv.id === conversation?.id) ? 'w-3/4 whitespace-nowrap overflow-hidden' : 'w-full truncate'} h-full text-white text-sm font-devcomthin`}>{conv.displayMsg}</p>
-                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent to-neutral-900 from-40% rounded"></div>
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent to-neutral-900 rounded"></div>
                                 {
                                     (conv.id === conversation?.id) && 
                                         <div className="absolute top-0 right-0 w-1/4 h-full flex justify-end items-center gap-1 px-5">
