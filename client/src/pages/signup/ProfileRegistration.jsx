@@ -67,7 +67,6 @@ const ProfileRegistration = () => {
 return (
   <div className="nav-blur noscroll w-screen h-screen overflow-y-auto">
     <ProfileBG />
-    <NavBar currentPath={window.location.pathname} />
     <div className="noscroll absolute pt-20 w-full h-full flex flex-col items-center justify-start gap-20 font-devcom z-0 overflow-y-auto">
       <section className="profile-hero-1 w-full h-[calc(100vh-15rem)] flex-grow-0 flex-shrink-0 flex items-center">
         <div className="about-me w-1/4 h-full px-3 py-32 flex flex-col items-center gap-6">

@@ -11,7 +11,6 @@ const Articles = () => {
     return (
         <div className='noscroll w-screen h-screen overflow-y-auto'>
             <ArticlesBG/>
-            <NavBar currentPath={window.location.pathname}/>
             <div className="w-full h-full absolute pt-20 flex items-start justify-start gap-20 font-devcom z-0 overflow-y-auto">
                 <div className="w-full h-full flex gap-10 p-12">
                     <div className="w-2/3 h-full flex flex-col justify-start gap-10">

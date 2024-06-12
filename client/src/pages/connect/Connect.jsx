@@ -38,7 +38,6 @@ const Connect = () => {
 	return (
 		<>
 			<HomeBG />
-			<NavBar/>
 			<div className="bg-transparent absolute top-20 left-0 h-[calc(100vh-10rem)] px-10 pt-4 pb-4 w-full flex items-center justify-center">
 				<div
 				id="hack2-left-panel"

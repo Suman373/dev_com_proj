@@ -60,7 +60,6 @@ const HackathonDetails = () => {
   return (
     <>
       <HomeBG />
-      <NavBar currentPath={""} />
 
       <div
         style={{

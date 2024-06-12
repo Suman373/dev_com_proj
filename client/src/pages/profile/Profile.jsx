@@ -10,7 +10,6 @@ import { useState, useEffect, useRef } from 'react'
   
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend)
 
-import NavBar from "../../constants/NavBar"
 import ConnectReq from '../../components/profile/ConnectReq';
 import CollabReq from '../../components/profile/CollabReq';
 import ProfileBG from "./ProfileBG"
@@ -36,7 +35,6 @@ const Profile = () => {
     return (
         <div className="nav-blur noscroll w-screen h-screen overflow-y-auto">
             <ProfileBG/>
-            <NavBar/>
             <div className="fixed top-16 left-12 text-custom-gray text-lg flex justify-end items-end gap-10 z-10">
                 <span 
                     className={`${(selectedSection === 'about') && 'border-b-2 border-custom-green'} cursor-pointer`}
