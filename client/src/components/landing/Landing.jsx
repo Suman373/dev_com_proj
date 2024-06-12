@@ -5,9 +5,6 @@ const Landing = () => {
 	return (
 		<>
 		<HomeBG />
-		<div className="absolute font-devcombold text-3xl w-full h-16 flex items-center justify-center ">
-			<span className="text-white">Devcom.</span>
-		</div>
 		<div className="absolute h-full w-full pt-20 pb-20 bg-transparent flex items-center justify-center">
 			<div className="flex flex-col gap-4 items-center">
 			<span className="font-devcombold text-7xl text-custom-green">

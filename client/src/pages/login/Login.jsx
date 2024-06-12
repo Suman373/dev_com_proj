@@ -80,17 +80,7 @@ const Login = () => {
 		<>
 			<HomeBG/>
 			<div className="absolute top-0 left-0 overflow-hidden h-screen w-screen font-devcom">
-				<div className="w-full h-20 absolute left-0 top-0 flex items-center justify-center z-10">
-					<div 	
-						className="absolute left-8 flex justify-center items-center h-10 w-10 rounded hover:bg-custom-hover hover:cursor-pointer"
-						onClick={() => navigate('/')}
-					>
-						<WhiteArrowIconSVG/>
-					</div>
-					<span className="font-devcombold text-white text-3xl">
-						DevCom.
-					</span>
-				</div>
+				
 				<div className="absolute font-devcombold text-3xl py-20 w-full h-full flex flex-col items-center justify-center gap-10 display-column">
 					{
 						(currentlyAccepting === 'username') ?

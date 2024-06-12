@@ -30,7 +30,6 @@ const DevMate = () => {
 
     return (
         <>
-            <NavBar/>
             <ChatBG/>
             <div className="absolute pt-20 w-full h-full flex items-center justify-start gap-20 font-devcom z-0 overflow-hidden">
                 <div className="w-full h-full px-10 py-12 flex items-center justify-between gap-4">
